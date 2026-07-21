@@ -1,0 +1,30 @@
+-- Create DONATIONS table
+CREATE TABLE donations (
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    amount NUMBER NOT NULL,
+    phone_number VARCHAR2(20) NOT NULL,
+    provider VARCHAR2(20) NOT NULL,
+    status VARCHAR2(20) DEFAULT 'PENDING',
+    transaction_ref VARCHAR2(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create PROJECTS table
+CREATE TABLE projects (
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title VARCHAR2(100) NOT NULL,
+    description CLOB,
+    image_url VARCHAR2(255),
+    category VARCHAR2(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create MESSAGES table
+CREATE TABLE messages (
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    full_name VARCHAR2(100),
+    email VARCHAR2(100),
+    subject VARCHAR2(100),
+    content CLOB,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
