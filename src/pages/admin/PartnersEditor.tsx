@@ -108,7 +108,7 @@ const PartnersEditor = () => {
                                         if (file) {
                                             const reader = new FileReader();
                                             reader.onloadend = async () => {
-                                                const compressed = await compressImage(reader.result as string, 800, 800);
+                                                const compressed = await compressImage(reader.result as string, 800, 500);
                                                 setFormData({ ...formData, logo: compressed });
                                             };
                                             reader.readAsDataURL(file);

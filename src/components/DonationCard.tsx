@@ -65,8 +65,8 @@ const DonationCard = ({
                     {/* Account Number Pill in Brand Green */}
                     <div className="bg-primary hover:bg-primary/90 transition-colors text-white rounded-2xl p-4 flex items-center justify-between gap-4 w-full sm:w-auto shadow-md">
                         <div>
-                            <p className="text-[10px] text-white/80 font-bold uppercase tracking-wider">
-                                ACCOUNT NUMBER
+                            <p className="text-[10px] text-white/80 font-bold tracking-wider">
+                                Account Number
                             </p>
                             <code className="text-base sm:text-lg font-mono font-extrabold tracking-wider block">
                                 {accountNumber}
@@ -86,8 +86,8 @@ const DonationCard = ({
                     {/* Swift Code Pill in Dark Theme */}
                     <div className="bg-black hover:bg-neutral-900 transition-colors text-white rounded-2xl p-4 flex items-center justify-between gap-4 w-full sm:w-auto shadow-md border border-neutral-800">
                         <div>
-                            <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
-                                SWIFT CODE
+                            <p className="text-[10px] text-neutral-400 font-bold tracking-wider">
+                                Swift Code
                             </p>
                             <code className="text-base sm:text-lg font-mono font-extrabold tracking-wider block">
                                 {swiftCode}

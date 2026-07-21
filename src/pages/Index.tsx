@@ -28,7 +28,7 @@ const slides = [
     title: (
       <>
         Empowering Youth,{" "}
-        <span className="text-yellow-300">Transforming</span> Communities
+        <span className="text-primary">Transforming</span> Communities
       </>
     ),
     description: "We believe in the power of young people to create lasting change. Join us in building a future where every youth has the opportunity to thrive."
@@ -38,7 +38,7 @@ const slides = [
     title: (
       <>
         Building Skills{" "}
-        <span className="text-yellow-300">for Tomorrow</span>
+        <span className="text-primary">for Tomorrow</span>
       </>
     ),
     description: "Equipping the next generation with the knowledge, technical expertise, and confidence to succeed in a rapidly evolving world."
@@ -48,7 +48,7 @@ const slides = [
     title: (
       <>
         Vocational & Practical{" "}
-        <span className="text-yellow-300">Life Skilling</span>
+        <span className="text-primary">Life Skilling</span>
       </>
     ),
     description: "Providing hands-on vocational skills, financial empowerment, and practical tools to build resilient, independent lives."
@@ -58,11 +58,34 @@ const slides = [
     title: (
       <>
         Nurturing{" "}
-        <span className="text-yellow-300">Future Leaders</span>
+        <span className="text-primary">Future Leaders</span>
       </>
     ),
     description: "Creating pathways for environmental stewardship, mentorship, and personal growth to develop compassionate community leaders."
   }
+];
+
+const row1Logos = [
+  { name: "Partner 1", logo: "/LOGO 1.jpg" },
+  { name: "Partner 2", logo: "/LOGO 2.jpg" },
+  { name: "Partner 3", logo: "/LOGO 3.jpg" },
+  { name: "Partner 4", logo: "/LOGO 4.jpg" },
+  { name: "Partner 5", logo: "/LOGO 5.jpg" },
+  { name: "Partner 6", logo: "/LOGO 6.jpg" },
+  { name: "Partner 7", logo: "/LOGO 7.jpg" },
+  { name: "Partner 8", logo: "/LOGO 8.jpg" },
+];
+
+const row2Logos = [
+  { name: "Partner 9", logo: "/LOGO 9.jpg" },
+  { name: "Partner 10", logo: "/LOGO 10.jpg" },
+  { name: "Partner 11", logo: "/LOGO 11.jpg" },
+  { name: "Partner 12", logo: "/LOGO 12.jpg" },
+  { name: "Partner 13", logo: "/LOGO 13.jpg" },
+  { name: "Partner 14", logo: "/LOGO 14.jpg" },
+  { name: "Partner 15", logo: "/LOGO 15.jpg" },
+  { name: "Partner 16", logo: "/LOGO 16.jpg" },
+  { name: "Partner 17", logo: "/LOGO 17.jpg" },
 ];
 
 const Index = () => {
@@ -142,13 +165,13 @@ const Index = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
+                <Button size="lg" className="bg-primary text-white hover:bg-primary/90" asChild>
                   <Link to="/projects">
                     Explore Our Work
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="heroOutline" asChild>
+                <Button size="lg" variant="outline" asChild>
                   <Link to="/register">Register</Link>
                 </Button>
               </div>
@@ -264,7 +287,7 @@ const Index = () => {
           <div className="relative w-full overflow-hidden py-4 space-y-6">
             {/* Row 1: Sliding Left */}
             <div className="animate-marquee flex items-center gap-8 md:gap-12">
-              {[...finalPartners, ...finalPartners, ...finalPartners].map((partner, index) => (
+              {[...row1Logos, ...row1Logos, ...row1Logos].map((partner, index) => (
                 <div
                   key={`row1-${index}`}
                   className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center w-56 h-36 md:w-64 md:h-40 hover:border-primary transition-all duration-300 shadow-md flex-shrink-0 group"
@@ -280,7 +303,7 @@ const Index = () => {
 
             {/* Row 2: Sliding Right (Opposite Direction) */}
             <div className="animate-marquee-reverse flex items-center gap-8 md:gap-12">
-              {[...finalPartners, ...finalPartners, ...finalPartners].reverse().map((partner, index) => (
+              {[...row2Logos, ...row2Logos, ...row2Logos].map((partner, index) => (
                 <div
                   key={`row2-${index}`}
                   className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center w-56 h-36 md:w-64 md:h-40 hover:border-primary transition-all duration-300 shadow-md flex-shrink-0 group"
