@@ -66,7 +66,7 @@ const Profile = () => {
         description="Learn about SSENA HEALING AFRICA's history, mission to foster mental wellness, and our core values of integrity and inclusion."
       />
       {/* Hero Section */}
-      <section className="hero-gradient section-padding relative overflow-hidden">
+      <section className="bg-zinc-900 section-padding relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-[0.15]">
           <img
             src="/Our profile.jpg"
@@ -75,10 +75,10 @@ const Profile = () => {
           />
         </div>
         <div className="container-narrow mx-auto text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-bold text-primary-foreground mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6">
             Our Profile
           </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Learn about who we are, what drives us, and our commitment to emotional healing and mental wellness.
           </p>
         </div>
@@ -108,8 +108,13 @@ const Profile = () => {
                   Our organization operates at the intersection of professional mental health care, group counseling, and community support. We understand that true empowerment requires emotional resilience—one that heals personal wounds and builds long-term psychological capacity for sustainable personal growth.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Since our inception, SSENA HEALING AFRICA has impacted thousands of lives across multiple communities. Through partnerships with schools, hospitals, and local leaders, we continue to expand our reach and deepen our impact. Learn more about [our services](file:///what-we-do) behind these initiatives.
+                  Since our inception, SSENA HEALING AFRICA has impacted thousands of lives across multiple communities. Through partnerships with schools, hospitals, and local leaders, we continue to expand our reach and deepen our impact.
                 </p>
+                <div className="pt-2 text-center md:text-left">
+                  <Button asChild className="bg-black hover:bg-neutral-900 text-primary border border-neutral-800 rounded-full px-6 h-11 font-semibold">
+                    <Link to="/what-we-do">Learn more</Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

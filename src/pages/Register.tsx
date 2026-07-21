@@ -132,7 +132,7 @@ const Register = () => {
                         <h2 className="text-3xl font-bold text-foreground mb-4">In Review!</h2>
                         <p className="text-muted-foreground mb-8">
                             We've received your registration details for <span className="font-bold text-primary">{formData.fullName}</span>.
-                            Once your UGX 10,000 payment is confirmed, you will be officially listed as a SUYEL member.
+                            Once your UGX 10,000 payment is confirmed, you will be officially listed as a member of SSENA HEALING AFRICA.
                         </p>
                         <Button
                             onClick={() => window.location.href = "/"}
@@ -155,7 +155,7 @@ const Register = () => {
                             Register for Membership
                         </h1>
                         <p className="text-muted-foreground text-lg">
-                            Join SUYEL today. The annual registration fee is <span className="font-bold text-primary">UGX 10,000</span>.
+                            Join SSENA HEALING AFRICA today. The annual registration fee is <span className="font-bold text-primary">UGX 10,000</span>.
                         </p>
                     </div>
 

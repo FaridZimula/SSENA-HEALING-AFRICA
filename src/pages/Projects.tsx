@@ -99,7 +99,7 @@ const Projects = () => {
         <div className="relative bg-gradient-to-br from-black via-neutral-900 to-black text-white rounded-[2.5rem] py-16 text-center shadow-2xl overflow-hidden border border-neutral-800">
           {/* Background Image */}
           <div className="absolute inset-0 opacity-40">
-            <img src="/DONATIONS FOOTER.webp" alt="SUYEL community members" className="w-full h-full object-cover" />
+            <img src="/DONATIONS FOOTER.webp" alt="SSENA HEALING AFRICA community members" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80" />
           </div>
 

@@ -5,36 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
+import { Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
 import SEO from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-youth.jpg";
 import { useData } from "@/context/DataContext";
 import { API_URL } from "@/config";
 import { supabase } from "@/lib/supabase";
-
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    details: ["Iganga Kasokoso central division", "Wakiso Gayaza-Kampala road"],
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    details: ["+256 705 206 985", "+256 763 238 667"],
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    details: ["ssenahealingafrica@gmail.com", "ssenabulyasimon670@gmail.com"],
-  },
-  {
-    icon: Clock,
-    title: "Working Hours",
-    details: ["Mon - Fri: 8:00 AM - 5:00 PM", "Sat: 9:00 AM - 1:00 PM"],
-  },
-];
 
 const Contact = () => {
   const { toast } = useToast();
@@ -97,7 +74,7 @@ const Contact = () => {
       <section className="bg-zinc-900 section-padding relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-[0.15]">
           <img
-            src="/Contact.jpg"
+            src="/KINGS 1.webp"
             alt="Contact SSENA HEALING AFRICA - Support and Inquiries"
             className="w-full h-full object-cover"
           />
@@ -121,18 +98,6 @@ const Contact = () => {
 
 
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Visit Us */}
-                <div className="bg-primary rounded-2xl p-8 text-center card-elevated border border-white/10 shadow-lg">
-                  <div className="w-14 h-14 bg-white/10 text-white rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/10">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <h4 className="font-bold text-white text-lg mb-2">Head Office</h4>
-                  <div className="space-y-1">
-                    <p className="text-white/90 text-base">Iganga Kasokoso central division</p>
-                    <p className="text-white/90 text-base">Wakiso Gayaza-Kampala road</p>
-                  </div>
-                </div>
-
                 {/* Call Us */}
                 <div className="bg-primary rounded-2xl p-8 text-center card-elevated border border-white/10 shadow-lg">
                   <div className="w-14 h-14 bg-white/10 text-white rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/10">
@@ -144,8 +109,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Email Us - Full Width */}
-                <div className="md:col-span-2 bg-primary rounded-2xl p-8 text-center card-elevated border border-white/10 shadow-lg">
+                {/* Email Us */}
+                <div className="bg-primary rounded-2xl p-8 text-center card-elevated border border-white/10 shadow-lg">
                   <div className="w-14 h-14 bg-white/10 text-white rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/10">
                     <Mail className="w-6 h-6" />
                   </div>
@@ -253,59 +218,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container-narrow mx-auto">
-          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Visit Our Locations
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Find us at our offices in Iganga and Wakiso.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Iganga Location */}
-            <div data-aos="fade-right" className="bg-white rounded-2xl p-2 shadow-lg card-elevated">
-              <div className="text-center mb-4 mt-2">
-                <h3 className="font-bold text-xl text-primary">Head Office</h3>
-                <p className="text-muted-foreground">Iganga Kasokoso, Main Street</p>
-              </div>
-              <div className="w-full h-[400px] rounded-xl overflow-hidden bg-gray-100">
-                <iframe
-                  title="Iganga Location"
-                  width="100%"
-                  height="100%"
-                  className="border-0"
-                  loading="lazy"
-                  allowFullScreen
-                  src="https://www.google.com/maps?q=Iganga+Kasokoso+Central+Division&output=embed"
-                ></iframe>
-              </div>
-            </div>
-
-            {/* Wakiso Location */}
-            <div data-aos="fade-left" className="bg-white rounded-2xl p-2 shadow-lg card-elevated">
-              <div className="text-center mb-4 mt-2">
-                <h3 className="font-bold text-xl text-primary">Branch Office</h3>
-                <p className="text-muted-foreground">Wakiso Gayaza, Gayaza-Kampala Road</p>
-              </div>
-              <div className="w-full h-[400px] rounded-xl overflow-hidden bg-gray-100">
-                <iframe
-                  title="Wakiso Location"
-                  width="100%"
-                  height="100%"
-                  className="border-0"
-                  loading="lazy"
-                  allowFullScreen
-                  src="https://www.google.com/maps?q=Gayaza-Kampala+Road+Wakiso&output=embed"
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* FAQ Section */}
