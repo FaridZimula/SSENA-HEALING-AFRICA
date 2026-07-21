@@ -33,33 +33,45 @@ const Donate = () => {
     return (
         <Layout>
             <SEO
-                title="Support Our Mission | Donate to SUYEL"
-                description="Your contribution helps us empower more Ugandan youth. Support our education, health, and leadership programs today."
+                title="Support Our Mission | Donate to SSENA HEALING AFRICA"
+                description="Your contribution helps us provide professional counseling, trauma healing workshops, and mental health support. Support our mission today."
             />
             {/* Hero Section */}
-            <section className="py-8 md:py-12 px-4 sm:px-6 lg:px-8 bg-background">
-                <div className="container-narrow mx-auto">
-                    <div className="hidden md:block mb-8" data-aos="fade-up">
-                        <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-                            Empowering the Next Generation of Leaders
-                        </h1>
-                    </div>
+            <section className="bg-zinc-900 section-padding relative overflow-hidden">
+                <div className="absolute inset-0 z-0 opacity-[0.15]">
+                    <img
+                        src="/CommunityOutreach3.jpg"
+                        alt="Support SSENA HEALING AFRICA"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+                <div className="container-narrow mx-auto text-center relative z-10">
+                    <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6">
+                        Support Our Mission
+                    </h1>
+                    <p className="text-lg text-white max-w-2xl mx-auto">
+                        Your contribution helps us provide counseling, trauma healing workshops, and mental wellness support across communities.
+                    </p>
+                </div>
+            </section>
 
+            <section className="section-padding bg-background">
+                <div className="container-narrow mx-auto">
                     <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
                         <div className="lg:col-span-2 space-y-8 md:space-y-12">
                             <div ref={heroRef} className="relative aspect-[4/5] md:aspect-video rounded-b-[3.5rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl" data-aos="fade-up">
                                 <img
                                     src="/CommunityOutreach3.jpg"
-                                    alt="SUYEL Community Outreach Program in Uganda - Supporting youth and local communities"
+                                    alt="SSENA HEALING AFRICA support programs - Healing hearts, rebuilding lives"
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-12">
                                     <div className="space-y-4">
                                         <h2 className="text-4xl md:text-6xl font-bold text-white drop-shadow-2xl leading-tight">
-                                            POWERING YOUTH POTENTIAL
+                                            SUPPORT HEALING & RECOVERY
                                         </h2>
                                         <p className="md:hidden text-lg font-bold text-white/90 leading-snug">
-                                            Empowering the Next Generation of Leaders
+                                            Restoring Hope & Building Resilience
                                         </p>
                                     </div>
                                 </div>
@@ -77,16 +89,16 @@ const Donate = () => {
 
                             <div className="prose prose-lg max-w-none text-gray-600 space-y-6" data-aos="fade-up">
                                 <p className="leading-relaxed">
-                                    Step Up Uganda Youth Empowerment League (SUYEL) is a youth-led community-based organization dedicated to transforming the lives of vulnerable youth in Uganda.
+                                    SSENA HEALING AFRICA is a community-based organization dedicated to promoting mental wellness, emotional healing, and holistic support across communities in Africa.
                                 </p>
                                 <p className="leading-relaxed">
-                                    Our mission is to empower the next generation with the tools, skills, and confidence they need to lead positive change in their communities. Your donation directly funds:
+                                    Our mission is to provide professional, confidential counseling services and trauma healing workshops. Your donation directly funds:
                                 </p>
                                 <ul className="list-disc pl-6 space-y-2">
-                                    <li>Skills development workshops and vocational training.</li>
-                                    <li>Leadership mentorship programs for young innovators.</li>
-                                    <li>Community outreach and basic needs support for street-connected youth.</li>
-                                    <li>Educational scholarships and school supply kits.</li>
+                                    <li>Talk therapy and counseling sessions for vulnerable individuals.</li>
+                                    <li>Substance abuse and addiction recovery programs.</li>
+                                    <li>Trauma healing workshops in remote communities.</li>
+                                    <li>School counseling, self-discovery, and peer support programs.</li>
                                 </ul>
                             </div>
 

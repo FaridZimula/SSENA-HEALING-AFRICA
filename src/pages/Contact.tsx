@@ -90,23 +90,23 @@ const Contact = () => {
   return (
     <Layout>
       <SEO
-        title="Contact Us | Connect with SUYEL"
-        description="Have questions or want to partner with us? Reach out to SUYEL via our contact form, email, or visit our office."
+        title="Contact Us | SSENA HEALING AFRICA"
+        description="Have questions or want to partner with us? Reach out to SSENA HEALING AFRICA via our contact form, email, or visit our office."
       />
       {/* Hero Section */}
-      <section className="hero-gradient section-padding relative overflow-hidden">
+      <section className="bg-zinc-900 section-padding relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-[0.15]">
           <img
             src="/Contact.jpg"
-            alt="Background"
+            alt="Contact SSENA HEALING AFRICA - Support and Inquiries"
             className="w-full h-full object-cover"
           />
         </div>
         <div className="container-narrow mx-auto text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-bold text-primary-foreground mb-6">
-            Contact SUYEL
+          <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6">
+            Contact SSENA HEALING AFRICA
           </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Have questions? We'd love to hear from you.
           </p>
         </div>
@@ -160,13 +160,13 @@ const Contact = () => {
 
             {/* Right Column: Form */}
             <div data-aos="fade-left" className="lg:col-span-5">
-              <div className="bg-primary rounded-2xl p-8 shadow-xl">
-                <h3 className="text-2xl font-bold text-white mb-6">
+              <div className="bg-black border border-neutral-800 rounded-2xl p-8 shadow-xl">
+                <h3 className="text-2xl font-bold text-primary mb-6">
                   Send us a message
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-white/90 text-base">Name</Label>
+                    <Label htmlFor="name" className="text-primary text-base font-semibold">Name</Label>
                     <Input
                       id="name"
                       name="name"
@@ -179,7 +179,7 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-white/90 text-base">Phone</Label>
+                    <Label htmlFor="phone" className="text-primary text-base font-semibold">Phone</Label>
                     <Input
                       id="phone"
                       type="tel"
@@ -192,7 +192,7 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-white/90 text-base">Email</Label>
+                    <Label htmlFor="email" className="text-primary text-base font-semibold">Email</Label>
                     <Input
                       id="email"
                       name="email"
@@ -206,7 +206,7 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-white/90 text-base">Subject</Label>
+                    <Label htmlFor="subject" className="text-primary text-base font-semibold">Subject</Label>
                     <Input
                       id="subject"
                       name="subject"
@@ -219,7 +219,7 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-white/90 text-base">Message</Label>
+                    <Label htmlFor="message" className="text-primary text-base font-semibold">Message</Label>
                     <Textarea
                       id="message"
                       name="message"

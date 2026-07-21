@@ -8,7 +8,7 @@ import { DataProvider } from "./context/DataContext";
 import { AuthProvider } from "./context/AuthContext";
 import Index from "./pages/Index";
 import Profile from "./pages/Profile";
-import Leadership from "./pages/Leadership";
+import WhatWeDo from "./pages/WhatWeDo";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -78,7 +78,7 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/profile" element={<Profile />} />
-                  <Route path="/leadership" element={<Leadership />} />
+                  <Route path="/what-we-do" element={<WhatWeDo />} />
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/register" element={<Register />} />

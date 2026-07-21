@@ -146,7 +146,7 @@ const Index = () => {
               >
                 <img
                   src={slide.image}
-                  alt={`SUYEL Youth Empowerment - ${slide.description.substring(0, 50)}...`}
+                  alt={`SSENA HEALING AFRICA - ${slide.description.substring(0, 50)}...`}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/30" />
@@ -330,22 +330,23 @@ const Index = () => {
                 Featured Projects and Activities
               </h2>
               <p className="text-muted-foreground text-lg">
-                Discover how we're making a difference in the lives of young people across communities.
+                Discover how we're fostering mental wellness, emotional healing, and resilience in communities.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-row overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-6 snap-x snap-mandatory scrollbar-none px-4 -mx-4 sm:px-6 sm:-mx-6 md:px-0 md:mx-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {sortedProjects.slice(0, 3).map((project, index) => (
-                <ProjectCard
-                  key={index}
-                  title={project.title}
-                  description={project.shortDescription}
-                  images={project.images}
-                  icon={project.icon}
-                  showIcon={true}
-                  variant="home"
-                  category={project.category}
-                />
+                <div key={index} className="w-[85vw] sm:w-[380px] md:w-auto shrink-0 snap-start">
+                  <ProjectCard
+                    title={project.title}
+                    description={project.shortDescription}
+                    images={project.images}
+                    icon={project.icon}
+                    showIcon={true}
+                    variant="home"
+                    category={project.category}
+                  />
+                </div>
               ))}
             </div>
 
@@ -450,7 +451,7 @@ const Index = () => {
         <div data-aos="zoom-in" className="relative bg-black rounded-[2.5rem] py-16 text-center shadow-2xl overflow-hidden border border-white/10">
           {/* Background Image */}
           <div className="absolute inset-0 opacity-[0.2]">
-            <img src="/Make a difference.jpg" alt="Join SUYEL to support youth empowerment projects" className="w-full h-full object-cover" />
+            <img src="/BOY CHILD 5.webp" alt="Join SSENA HEALING AFRICA to support mental health and therapy projects" className="w-full h-full object-cover" />
           </div>
 
           <div className="container-narrow mx-auto relative z-10 px-4">
@@ -458,14 +459,14 @@ const Index = () => {
               Ready to Make a Difference?
             </h2>
             <p className="text-white/90 text-lg max-w-2xl mx-auto mb-8">
-              Whether you want to volunteer, donate, or partner with us, there are many ways to support our mission of empowering youth.
+              Whether you want to volunteer, donate, or partner with us, there are many ways to support our mission of healing and mental wellness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold" asChild>
                 <Link to="/contact">Contact Us Today</Link>
               </Button>
-              <Button size="lg" variant="heroOutline" asChild>
-                <Link to="/leadership">Meet Our Team</Link>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
+                <Link to="/what-we-do">What We Do</Link>
               </Button>
             </div>
           </div>

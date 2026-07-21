@@ -43,23 +43,23 @@ const Projects = () => {
   return (
     <Layout>
       <SEO
-        title="Our Projects | Transformative Youth Initiatives"
-        description="Explore SUYEL's ongoing projects in education, health, and economic empowerment across Uganda."
+        title="Our Projects | SSENA HEALING AFRICA"
+        description="Explore SSENA HEALING AFRICA's ongoing projects in community wellness, mental health support, and therapy across Uganda."
       />
       {/* Hero Section */}
-      <section className="hero-gradient section-padding relative overflow-hidden">
+      <section className="bg-zinc-900 section-padding relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-[0.15]">
           <img
             src="/CANDIDATES 10.webp"
-            alt="Young leaders participating in a SUYEL empowerment workshop in Uganda"
+            alt="Participants in a SSENA HEALING AFRICA mental health and wellness workshop in Uganda"
             className="w-full h-full object-cover"
           />
         </div>
         <div className="container-narrow mx-auto text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-bold text-primary-foreground mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-6">
             Our Projects & Activities
           </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Discover our community initiatives and strategic partnerships driving positive, sustainable change across Africa.
           </p>
         </div>

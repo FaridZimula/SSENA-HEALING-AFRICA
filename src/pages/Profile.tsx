@@ -25,7 +25,7 @@ const LaunchSlideshow = () => {
           <img
             key={num}
             src={`/Speaker ${num}.jpeg`}
-            alt={`SUYEL Launch Event - Speaker ${num} discussing youth empowerment strategy`}
+            alt={`SSENA HEALING AFRICA Launch Event - Speaker ${num} discussing mental health strategy`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${current === num ? "opacity-100 scale-105" : "opacity-0 scale-100"
               } duration-[4000ms]`}
           />
@@ -62,15 +62,15 @@ const Profile = () => {
   return (
     <Layout>
       <SEO
-        title="Our Profile | Vision, Mission & Values of SUYEL"
-        description="Learn about SUYEL's history, mission to build tomorrow's leaders, and our core values of integrity and inclusion."
+        title="Our Profile | Vision, Mission & Values of SSENA HEALING AFRICA"
+        description="Learn about SSENA HEALING AFRICA's history, mission to foster mental wellness, and our core values of integrity and inclusion."
       />
       {/* Hero Section */}
       <section className="hero-gradient section-padding relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-[0.15]">
           <img
             src="/Our profile.jpg"
-            alt="SUYEL Organization Profile and Values"
+            alt="SSENA HEALING AFRICA Organization Profile and Values"
             className="w-full h-full object-cover"
           />
         </div>
@@ -79,7 +79,7 @@ const Profile = () => {
             Our Profile
           </h1>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
-            Learn about who we are, what drives us, and our commitment to youth empowerment.
+            Learn about who we are, what drives us, and our commitment to emotional healing and mental wellness.
           </p>
         </div>
       </section>
@@ -92,23 +92,23 @@ const Profile = () => {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-accent/50 shadow-lg border border-border/50 flex items-center justify-center">
                 <img
                   src="/Milestone 2.jpg"
-                  alt="SUYEL Accomplishments and Community Milestones"
+                  alt="SSENA HEALING AFRICA Accomplishments and Community Milestones"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
 
             <div data-aos="fade-left">
-              <h2 className="text-3xl font-bold text-foreground mb-6 text-center md:text-left">About SUYEL</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-6 text-center md:text-left">About SSENA HEALING AFRICA</h2>
               <div className="space-y-4">
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Step Up Uganda Youth Empowerment League (SUYEL) is a non-governmental organization dedicated to transforming the lives of young people through comprehensive empowerment programs. Founded with the belief that every young person deserves the opportunity to reach their full potential, we work tirelessly to break down barriers and create pathways to success.
+                  SSENA HEALING AFRICA is a dedicated community-based organization focusing on promoting mental wellness, emotional healing, and holistic support programs. Founded with the belief that psychological well-being is fundamental to human development, we work tirelessly to provide therapy, counseling, and counseling training programs across Africa.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Our organization operates at the intersection of education, skills development, and community engagement. We understand that true empowerment requires a holistic approach—one that addresses not just immediate needs but also builds long-term capacity for sustainable change.
+                  Our organization operates at the intersection of professional mental health care, group counseling, and community support. We understand that true empowerment requires emotional resilience—one that heals personal wounds and builds long-term psychological capacity for sustainable personal growth.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Since our inception, SUYEL has impacted thousands of young lives across multiple communities. Through partnerships with local organizations, government agencies, and international bodies, we continue to expand our reach and deepen our impact. Learn more about the [dedicated team](file:///leadership) behind these initiatives.
+                  Since our inception, SSENA HEALING AFRICA has impacted thousands of lives across multiple communities. Through partnerships with schools, hospitals, and local leaders, we continue to expand our reach and deepen our impact. Learn more about [our services](file:///what-we-do) behind these initiatives.
                 </p>
               </div>
             </div>
@@ -133,10 +133,10 @@ const Profile = () => {
               <h2 className="text-3xl font-bold text-foreground mb-2 text-center md:text-left">Message from the President</h2>
               <h3 className="text-xl font-semibold text-primary mb-6 text-center md:text-left">KIRUNDA MUHAWUYA</h3>
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed text-primary/80 italic mb-6 border-l-4 border-primary pl-6">
-                "Together, we can build a future where every young person has the opportunity to thrive, lead, and make a lasting impact on their community."
+                "Together, we can build a future where mental health is prioritized, emotional wounds are healed, and every individual has the resilience to thrive."
               </blockquote>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Our commitment to youth empowerment drives every initiative we undertake. We believe in the power of the next generation to transform our society.
+                Our commitment to mental health and emotional healing drives every initiative we undertake. We believe in the power of supportive counseling to transform our society.
               </p>
             </div>
           </div>
@@ -150,17 +150,17 @@ const Profile = () => {
             <div data-aos="fade-right" className="text-center md:text-left">
 
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mt-2 mb-6">
-                Building Tomorrow's Leaders Today
+                Restoring Hope and Building Resilience
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                SUYEL is dedicated to empowering young people through education, skills development, and community engagement. We provide the tools, mentorship, and opportunities they need to become agents of positive change.
+                SSENA HEALING AFRICA is dedicated to fostering mental health through counseling, trauma workshops, and behavioral therapy. We provide the safe spaces, guidance, and tools individuals need to heal and grow.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Our holistic approach addresses the unique challenges facing youth today, from access to quality education to employment opportunities and civic participation.
+                Our holistic approach addresses the emotional and psychological challenges facing individuals today, from stress, anxiety, and depression to substance abuse recovery and family relationship healing.
               </p>
               <Button asChild size="lg" className="text-lg">
-                <Link to="/projects">
-                  Learn More About Us
+                <Link to="/what-we-do">
+                  Explore Our Services
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
@@ -252,14 +252,14 @@ const Profile = () => {
             {/* Text Content - Left Side */}
             <div data-aos="fade-right" className="w-full md:w-1/2 space-y-6 text-left">
               <span className="inline-block px-4 py-1.5 bg-primary text-white rounded-full text-sm font-semibold mb-2">
-                THE SUYEL LAUNCH
+                THE SSENA HEALING AFRICA LAUNCH
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Organization Launch: A New Era Begins
+                Organization Launch: Fostering Mental Health
               </h2>
               <div className="w-20 h-1.5 bg-primary rounded-full"></div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                The official launch of the Step Up Uganda Youth Empowerment League (SUYEL) took place on January 25th, 2025. It was a momentous occasion where organization members, and particularly the board members, engaged in insightful discussions regarding the year's strategic plans and the roadmap to elevate SUYEL to new heights.
+                The official launch of SSENA HEALING AFRICA took place on January 25th, 2025. It was a momentous occasion where organization members, professional counselors, and partners engaged in insightful discussions regarding the year's strategic roadmap to expand therapy services and elevate mental health awareness to new heights.
               </p>
             </div>
 
