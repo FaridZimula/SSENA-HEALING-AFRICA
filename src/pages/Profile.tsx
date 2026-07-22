@@ -7,56 +7,33 @@ import heroImage from "@/assets/hero-youth.jpg";
 import SEO from "@/components/SEO";
 
 const LaunchSlideshow = () => {
-  const [current, setCurrent] = useState(1);
-  const total = 10;
+  const images = ["/PROTECT MY DIGNITY.jpg", "/Sanitary 2.webp"];
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent(prev => (prev % total) + 1);
+      setCurrent(prev => (prev + 1) % images.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <>
-      {Array.from({ length: total }).map((_, i) => {
-        const num = i + 1;
-        return (
-          <img
-            key={num}
-            src={`/Speaker ${num}.jpeg`}
-            alt={`SSENA HEALING AFRICA Launch Event - Speaker ${num} discussing mental health strategy`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${current === num ? "opacity-100 scale-105" : "opacity-0 scale-100"
-              } duration-[4000ms]`}
-          />
-        );
-      })}
+      {images.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt="SSENA HEALING AFRICA Ongoing Project"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            current === idx ? "opacity-100 scale-105" : "opacity-0 scale-100"
+          } duration-[4000ms]`}
+        />
+      ))}
     </>
   );
 };
 
-const values = [
-  {
-    icon: Heart,
-    title: "Integrity",
-    description: "We uphold the highest standards of honesty and transparency in all our actions.",
-  },
-  {
-    icon: Users,
-    title: "Inclusion",
-    description: "We embrace diversity and ensure equal opportunities for all young people.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description: "We continuously seek creative solutions to address youth challenges.",
-  },
-  {
-    icon: Award,
-    title: "Excellence",
-    description: "We strive for the highest quality in all our programs and initiatives.",
-  },
-];
+
 
 const Profile = () => {
   return (
@@ -67,9 +44,9 @@ const Profile = () => {
       />
       {/* Hero Section */}
       <section className="bg-zinc-900 section-padding relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-[0.15]">
+        <div className="absolute inset-0 z-0 opacity-30">
           <img
-            src="/Our profile.jpg"
+            src="/Special Needs 7.webp"
             alt="SSENA HEALING AFRICA Organization Profile and Values"
             className="w-full h-full object-cover"
           />
@@ -91,7 +68,7 @@ const Profile = () => {
             <div data-aos="fade-right" className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-accent/50 shadow-lg border border-border/50 flex items-center justify-center">
                 <img
-                  src="/Milestone 2.jpg"
+                  src="/Special Needs 7.webp"
                   alt="SSENA HEALING AFRICA Accomplishments and Community Milestones"
                   className="w-full h-full object-cover"
                 />
@@ -112,7 +89,7 @@ const Profile = () => {
                 </p>
                 <div className="pt-2 text-center md:text-left">
                   <Button asChild className="bg-black hover:bg-neutral-900 text-primary border border-neutral-800 rounded-full px-6 h-11 font-semibold">
-                    <Link to="/what-we-do">Learn more</Link>
+                    <Link to="/what-we-do">Read more</Link>
                   </Button>
                 </div>
               </div>
@@ -128,20 +105,20 @@ const Profile = () => {
             <div data-aos="fade-up" className="md:col-span-5 lg:col-span-4">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white">
                 <img
-                  src="/Presidents photo.jpg"
-                  alt="KIRUNDA MUHAWUYA - President"
-                  className="w-full h-full object-cover [transform:scaleX(-1)]"
+                  src="/KISOBOOKA.jpg"
+                  alt="MR. SSENABULYA SIMON - Director"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
             <div data-aos="fade-up" data-aos-delay="200" className="md:col-span-7 lg:col-span-8">
-              <h2 className="text-3xl font-bold text-foreground mb-2 text-center md:text-left">Message from the President</h2>
-              <h3 className="text-xl font-semibold text-primary mb-6 text-center md:text-left">KIRUNDA MUHAWUYA</h3>
+              <h2 className="text-3xl font-bold text-foreground mb-2 text-center md:text-left">Message from the Director</h2>
+              <h3 className="text-xl font-semibold text-primary mb-6 text-center md:text-left">MR. SSENABULYA SIMON</h3>
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed text-primary/80 italic mb-6 border-l-4 border-primary pl-6">
-                "Together, we can build a future where mental health is prioritized, emotional wounds are healed, and every individual has the resilience to thrive."
+                "Through the Kisobooka Campaign—meaning 'It Is Possible'—we believe that no mental health struggle or emotional burden is insurmountable. When we bring awareness, empathy, and community support together, we restore hope and prove that healing is always within reach."
               </blockquote>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Our commitment to mental health and emotional healing drives every initiative we undertake. We believe in the power of supportive counseling to transform our society.
+                The Kisobooka Campaign stands as a cornerstone of our mission, breaking mental health stigma, championing sickle cell awareness, and empowering our youth to thrive.
               </p>
             </div>
           </div>
@@ -207,70 +184,46 @@ const Profile = () => {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="section-padding bg-background">
-        <div className="container-narrow mx-auto">
-          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12">
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mt-2 mb-4">
-              Our Core Values
+
+      {/* Ongoing Projects Section */}
+      <section className="py-16 bg-white/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Ongoing Projects
             </h2>
             <p className="text-muted-foreground text-lg">
-              These principles guide everything we do and shape how we serve our communities.
+              Discover our active initiatives creating real impact in communities.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} data-aos="flip-up" data-aos-delay={index * 100} className="group h-64 [perspective:1000px]">
-                <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                  {/* Front Face */}
-                  <div className="absolute inset-0 h-full w-full bg-primary rounded-2xl flex flex-col items-center justify-center p-6 [backface-visibility:hidden] card-elevated">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 border-2 border-white/20 bg-white/5">
-                      <value.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">
-                      {value.title}
-                    </h3>
-                  </div>
-
-                  {/* Back Face */}
-                  <div className="absolute inset-0 h-full w-full bg-primary rounded-2xl flex flex-col items-center justify-center p-6 [transform:rotateY(180deg)] [backface-visibility:hidden] card-elevated">
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-white/90 text-lg text-center">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Launch Section */}
-      <section className="py-16 bg-white/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
           <div className="flex flex-col-reverse md:flex-row items-center gap-12 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-primary/10">
             {/* Text Content - Left Side */}
             <div data-aos="fade-right" className="w-full md:w-1/2 space-y-6 text-left">
-              <span className="inline-block px-4 py-1.5 bg-primary text-white rounded-full text-sm font-semibold mb-2">
-                THE SSENA HEALING AFRICA LAUNCH
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Organization Launch: Fostering Mental Health
-              </h2>
-              <div className="w-20 h-1.5 bg-primary rounded-full"></div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+                Protect My Dignity
+              </h3>
+              <div className="w-20 h-1.5 bg-primary rounded-full mb-6"></div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                The official launch of SSENA HEALING AFRICA took place on January 25th, 2025. It was a momentous occasion where organization members, professional counselors, and partners engaged in insightful discussions regarding the year's strategic roadmap to expand therapy services and elevate mental health awareness to new heights.
+                SSENA HEALING AFRICA is actively executing the <strong>"PROTECT MY DIGNITY"</strong> Charity Project, a vital initiative dedicated to empowering vulnerable young girls in rural communities. Menstrual hygiene management is fundamental to human dignity, yet thousands of schoolgirls face severe social stigma and miss school monthly due to a lack of basic sanitary products.
               </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our ongoing outreach targets <strong>250 vulnerable girls</strong> at Tubeyi Primary School in Bukhiende Sub County, Mbale District on <strong>14th August 2026</strong>. At just <strong>UGX 10,000 per pack</strong>, we provide reusable pads, menstrual education, and mental health awareness to ensure young girls stay in school with confidence and self-worth.
+              </p>
+              <div className="pt-2">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-extrabold px-8 py-6 rounded-full text-lg shadow-lg hover:shadow-primary/30 transition-all">
+                  <Link to="/donate/pay">
+                    Donate Now — UGX 10,000 / Pack
+                    <Heart className="w-5 h-5 ml-2 fill-white" />
+                  </Link>
+                </Button>
+              </div>
             </div>
 
             {/* Slideshow - Right Side */}
-            <div data-aos="fade-left" className="w-full md:w-1/2">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+            <div data-aos="fade-left" className="w-full md:w-1/2 flex items-center justify-center">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-lg mx-auto">
                 <LaunchSlideshow />
               </div>
             </div>

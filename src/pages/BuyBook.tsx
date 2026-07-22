@@ -40,8 +40,8 @@ const BOOKS: BookOption[] = [
   },
   {
     id: "childhood",
-    title: "Childhood Traumas & Adulthood",
-    subtitle: "Ending Child Sexual Violence & Abuse Awareness",
+    title: "Echoes of a Stolen Childhood",
+    subtitle: "Reclaiming the lost voices",
     cover: "/CHILDHOOD.webp",
     description: "Authored by our Founder to create awareness about child sexual violence, protection, and how unaddressed childhood traumas profoundly affect adult life."
   }

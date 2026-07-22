@@ -25,7 +25,7 @@ const DonatePay = () => {
     // Form State
     const [amount, setAmount] = useState("");
     const [selectedPreset, setSelectedPreset] = useState<number | null>(null);
-    const [provider, setProvider] = useState<"mtn" | "airtel" | "card" | null>(null);
+    const [provider, setProvider] = useState<"mtn" | "airtel" | null>("mtn");
     const [phone, setPhone] = useState("");
     const [isAnonymous, setIsAnonymous] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -301,40 +301,7 @@ const DonatePay = () => {
                                 </h2>
 
                                 <div className="space-y-4">
-                                    {/* Card Option */}
-                                    <div className={`rounded-2xl border-2 transition-all overflow-hidden ${provider === "card" ? "border-primary ring-4 ring-primary/20 shadow-md bg-card" : "border-border hover:border-border/80 bg-card"}`}>
-                                        <button
-                                            type="button"
-                                            onClick={() => setProvider("card")}
-                                            className="w-full flex items-center justify-center gap-4 p-6"
-                                        >
-                                            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${provider === "card" ? "border-primary" : "border-muted-foreground"}`}>
-                                                {provider === "card" && <div className="w-3 h-3 bg-primary rounded-full" />}
-                                            </div>
-                                            <div className="flex flex-col items-center gap-1">
-                                                <span className="font-bold text-foreground text-lg">Credit or debit card</span>
-                                            </div>
-                                        </button>
 
-                                        {provider === "card" && (
-                                            <div className="px-6 pb-8 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300 border-t border-border pt-6">
-                                                <div className="space-y-2">
-                                                    <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Card Information</Label>
-                                                    <Input placeholder="Email address" className="h-12 rounded-xl" value={email} onChange={e => setEmail(e.target.value)} required />
-                                                </div>
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <Input placeholder="First name" className="h-12 rounded-xl" value={firstName} onChange={e => setFirstName(e.target.value)} required />
-                                                    <Input placeholder="Last name" className="h-12 rounded-xl" value={lastName} onChange={e => setLastName(e.target.value)} required />
-                                                </div>
-                                                <Input placeholder="Card number" className="h-12 rounded-xl" value={cardNumber} onChange={e => setCardNumber(e.target.value)} required />
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <Input placeholder="MM / YY" className="h-12 rounded-xl" value={expiry} onChange={e => setExpiry(e.target.value)} required />
-                                                    <Input placeholder="CVV" className="h-12 rounded-xl" value={cvv} onChange={e => setCvv(e.target.value)} required />
-                                                </div>
-                                                <Input placeholder="Name on card" className="h-12 rounded-xl" value={nameOnCard} onChange={e => setNameOnCard(e.target.value)} required />
-                                            </div>
-                                        )}
-                                    </div>
 
                                     {/* Mobile Money Options */}
                                     <div className="grid grid-cols-2 gap-4">
@@ -441,10 +408,10 @@ const DonatePay = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-primary/10 border border-primary/20 p-4 rounded-xl flex items-start gap-3 shadow-md">
-                                    <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                    <p className="text-xs text-foreground leading-relaxed">
-                                        SSENA HEALING AFRICA has a <span className="font-bold underline text-primary">0% platform fee</span> for donors. Your contribution goes directly to empowering youth programs across Uganda.
+                                <div className="bg-primary p-4 rounded-xl flex items-start gap-3 shadow-md text-white">
+                                    <ShieldCheck className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                                    <p className="text-xs text-white leading-relaxed font-medium">
+                                        SSENA HEALING AFRICA has a <span className="font-bold underline text-white">0% platform fee</span> for donors. Your contribution goes directly to empowering youth programs across Uganda.
                                     </p>
                                 </div>
                             </div>

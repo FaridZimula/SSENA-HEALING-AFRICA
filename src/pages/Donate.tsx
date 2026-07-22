@@ -38,9 +38,9 @@ const Donate = () => {
             />
             {/* Hero Section */}
             <section className="bg-zinc-900 section-padding relative overflow-hidden">
-                <div className="absolute inset-0 z-0 opacity-[0.15]">
+                <div className="absolute inset-0 z-0 opacity-30">
                     <img
-                        src="/CommunityOutreach3.jpg"
+                        src="/Pad 10.webp"
                         alt="Support SSENA HEALING AFRICA"
                         className="w-full h-full object-cover"
                     />
@@ -61,7 +61,7 @@ const Donate = () => {
                         <div className="lg:col-span-2 space-y-8 md:space-y-12">
                             <div ref={heroRef} className="relative aspect-[4/5] md:aspect-video rounded-b-[3.5rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl" data-aos="fade-up">
                                 <img
-                                    src="/CommunityOutreach3.jpg"
+                                    src="/KINGS 1.webp"
                                     alt="SSENA HEALING AFRICA support programs - Healing hearts, rebuilding lives"
                                     className="w-full h-full object-cover"
                                 />

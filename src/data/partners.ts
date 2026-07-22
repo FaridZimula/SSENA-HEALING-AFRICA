@@ -1,6 +1,10 @@
 
 export const partners = [
     {
+        name: "Solomon Lubega",
+        logo: "/SOLOMON LUBEGA.jpg",
+    },
+    {
         name: "Pamoja Foundation",
         logo: "/Pamoja Foundation.jpeg",
     },

@@ -66,6 +66,7 @@ const slides = [
 ];
 
 const row1Logos = [
+  { name: "Solomon Lubega", logo: "/SOLOMON LUBEGA.jpg" },
   { name: "Partner 1", logo: "/LOGO 1.jpg" },
   { name: "Partner 2", logo: "/LOGO 2.jpg" },
   { name: "Partner 3", logo: "/LOGO 3.jpg" },
@@ -326,7 +327,7 @@ const Index = () => {
                 <div className="relative w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30">
                   <img
                     src="/CHILDHOOD.webp"
-                    alt="Childhood Traumas and Adulthood Book"
+                    alt="Echoes of a Stolen Childhood Book"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 right-4 bg-primary text-white font-extrabold px-4 py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
@@ -336,7 +337,7 @@ const Index = () => {
 
                 <div className="space-y-3">
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight">
-                    "Childhood Traumas & Adulthood"
+                    "Echoes of a Stolen Childhood"
                   </h3>
                   <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                     In our continued efforts to end <strong>Child Sexual Violence</strong>, our Founder authored this crucial book to raise awareness about child sexual abuse, protection, and how unaddressed childhood traumas profoundly shape adulthood.
@@ -378,12 +379,12 @@ const Index = () => {
               {[...row1Logos, ...row1Logos, ...row1Logos].map((partner, index) => (
                 <div
                   key={`row1-${index}`}
-                  className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center w-56 h-36 md:w-64 md:h-40 hover:border-primary transition-all duration-300 shadow-md flex-shrink-0 group"
+                  className="overflow-hidden rounded-2xl flex items-center justify-center w-56 h-36 md:w-64 md:h-40 flex-shrink-0 group shadow-md hover:shadow-xl transition-all duration-300"
                 >
                   <img
                     src={partner.logo}
                     alt={`Corporate Partner - ${partner.name}`}
-                    className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-all duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                   />
                 </div>
               ))}
@@ -394,12 +395,12 @@ const Index = () => {
               {[...row2Logos, ...row2Logos, ...row2Logos].map((partner, index) => (
                 <div
                   key={`row2-${index}`}
-                  className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center w-56 h-36 md:w-64 md:h-40 hover:border-primary transition-all duration-300 shadow-md flex-shrink-0 group"
+                  className="overflow-hidden rounded-2xl flex items-center justify-center w-56 h-36 md:w-64 md:h-40 flex-shrink-0 group shadow-md hover:shadow-xl transition-all duration-300"
                 >
                   <img
                     src={partner.logo}
                     alt={`Corporate Partner - ${partner.name}`}
-                    className="max-w-full max-h-full object-contain filter group-hover:scale-110 transition-all duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                   />
                 </div>
               ))}
