@@ -82,7 +82,7 @@ const row2Logos = [
   { name: "Partner 9", logo: "/LOGO 9.jpg" },
   { name: "Partner 10", logo: "/LOGO 10.jpg" },
   { name: "Partner 11", logo: "/LOGO 11.jpg" },
-  { name: "Partner 12", logo: "/LOGO 12.jpg" },
+  { name: "Partner 12", logo: "/LOGO 12 PART 2.jpg" },
   { name: "Partner 13", logo: "/LOGO 13.jpg" },
   { name: "Partner 14", logo: "/LOGO 14.jpg" },
   { name: "Partner 15", logo: "/LOGO 15.jpg" },
@@ -90,6 +90,7 @@ const row2Logos = [
   { name: "Partner 17", logo: "/LOGO 17.jpg" },
   { name: "Partner 21", logo: "/LOGO 21.jpg" },
   { name: "Partner 22", logo: "/LOGO 22.jpg" },
+  { name: "Partner 23", logo: "/LOGO 23.jpg" },
 ];
 
 const Index = () => {
@@ -192,7 +193,7 @@ const Index = () => {
             <div data-aos="fade-right" className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-xl group">
               <img
                 src="/Milestone 2.jpg"
-                alt="SUYEL Impact Milestone - Youth Engagement in Uganda"
+                alt="SSENA HEALING AFRICA Impact Milestone - Youth Engagement in Uganda"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
@@ -247,15 +248,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Official Bank Account Donation Section */}
-      <section className="py-8 bg-background">
-        <div className="container-narrow mx-auto px-4">
-          <div data-aos="fade-up" className="max-w-5xl mx-auto">
-            <DonationCard />
-          </div>
-        </div>
-      </section>
-
       {/* Parallax CTA Section */}
       <section
         className="relative bg-fixed bg-cover bg-center py-8 md:py-[55px]"
@@ -272,6 +264,98 @@ const Index = () => {
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white border-none rounded-full px-8 text-base h-12 shadow-lg hover:shadow-primary/25 transition-all duration-300" asChild>
               <Link to="/register">Register Now</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Publications & Books Section */}
+      <section className="section-padding bg-background">
+        <div className="container-narrow mx-auto px-4">
+          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Featured Books & Publications
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Empowering communities with vital knowledge on mental health, trauma recovery, and child protection.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+            {/* Book 1: Breaking The Circle */}
+            <div data-aos="fade-right" className="bg-card border border-border rounded-[2.5rem] p-6 sm:p-8 lg:p-10 shadow-2xl flex flex-col justify-between h-full relative group">
+              <div className="space-y-6">
+                {/* Book Cover Image */}
+                <div className="relative w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30">
+                  <img
+                    src="/BREAKING_THE_CIRCLE.webp"
+                    alt="Breaking The Circle Mental Health Book"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4 bg-primary text-white font-extrabold px-4 py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
+                    UGX 30,000
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight">
+                    "Breaking The Circle"
+                  </h3>
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                    <strong>"Breaking The Circle"</strong> is an empowering mental health guide published by <strong>SSENA Healing Africa</strong>. Designed to support youth, families, and communities, this book offers practical coping mechanisms, emotional healing strategies, and tools to overcome life's silent struggles and stigma.
+                  </p>
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                    Every copy purchased directly supports our ongoing community mental health outreach programs and educational book donations across Ugandan schools.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold py-6 text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all" asChild>
+                  <Link to="/buy-book?book=breaking-the-circle">
+                    Order & Pay Online — UGX 30,000
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Book 2: Ending Child Sexual Violence & Trauma Awareness */}
+            <div data-aos="fade-left" className="bg-card border border-border rounded-[2.5rem] p-6 sm:p-8 lg:p-10 shadow-2xl flex flex-col justify-between h-full relative group">
+              <div className="space-y-6">
+                {/* Book Cover Image */}
+                <div className="relative w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30">
+                  <img
+                    src="/CHILDHOOD.webp"
+                    alt="Childhood Traumas and Adulthood Book"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4 bg-primary text-white font-extrabold px-4 py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
+                    UGX 30,000
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight">
+                    "Childhood Traumas & Adulthood"
+                  </h3>
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                    In our continued efforts to end <strong>Child Sexual Violence</strong>, our Founder authored this crucial book to raise awareness about child sexual abuse, protection, and how unaddressed childhood traumas profoundly shape adulthood.
+                  </p>
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                    Get copies for your children, loved ones, and yourself to gain deep insights into healing emotional wounds and protecting future generations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold py-6 text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all" asChild>
+                  <Link to="/buy-book?book=childhood">
+                    Order & Pay Online — UGX 30,000
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -366,58 +450,58 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Video Gallery Section */}
+      {/* Video Gallery Section (Our Latest Highlights & Updates) */}
       <VideoGallery />
 
-      {/* Message from Our President */}
+      {/* Official Bank Account Donation Section - Positioned below Highlights */}
+      <section className="py-8 bg-background">
+        <div className="container-narrow mx-auto px-4">
+          <div data-aos="fade-up" className="max-w-5xl mx-auto">
+            <DonationCard />
+          </div>
+        </div>
+      </section>
+
+      {/* The Kisobooka Campaign Section */}
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Portrait Image */}
+            {/* Left Side - Campaign Image */}
             <div data-aos="fade-right" className="relative">
               <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl relative z-10 w-full max-w-md mx-auto lg:mr-auto">
                 <img
-                  src="/Presidents photo.jpg"
-                  alt="KIRUNDA MUHAWUYA - SUYEL President and Founder"
-                  className="w-full h-full object-cover [transform:scaleX(-1)]"
+                  src="/KISOBOOKA.jpg"
+                  alt="The Kisobooka Campaign - SSENA HEALING AFRICA"
+                  className="w-full h-full object-cover"
                 />
               </div>
-
             </div>
 
             {/* Right Side - Article */}
-            {/* Right Side - Article */}
             <div data-aos="fade-left" className="text-center lg:text-left">
-
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Message from Our President
+                The Kisobooka Campaign
               </h2>
-              <div className="prose prose-lg text-muted-foreground mx-auto lg:mx-0">
+              <div className="prose prose-lg text-muted-foreground mx-auto lg:mx-0 space-y-4">
                 <p className="mb-4">
-                  "At Ssena Healing Africa, we envision a future where every young person is empowered to reach their full potential. Our journey has been one of resilience, innovation, and unwavering commitment to our community. We believe that the youth are not just beneficiaries of development, but active partners in driving sustainable change."
+                  The <strong>Kisobooka Campaign</strong> is an impactful community health initiative spearheaded by <strong>SSENA Healing Africa</strong> in active partnership with the <strong>Rotary Club of Kampala Kibuli</strong>, <strong>Rotaract Club of Upper Kibuli</strong>, and <strong>Rotaract Club of Kampala-Kibuli</strong>.
                 </p>
                 <p className="mb-4">
-                  "Seeing the transformation in the lives of the youth we work with is what drives us every day. From the classroom to the boardroom, we are nurturing a generation of leaders who will shape the destiny of our nation. Our programs are designed to bridge the gap between potential and opportunity, providing the skills and mentorship needed to succeed."
+                  Our core mission through this initiative is to break stigma and transform lives by tackling critical <strong>Mental Health</strong> and <strong>Sickle Cell Awareness</strong> challenges across our societies, schools, hospitals, and local communities.
                 </p>
 
                 {isExpanded && (
                   <div className="animate-fade-in space-y-4">
                     <p>
-                      "We recognize the challenges that lie ahead, but we are fueled by the passion and creativity of the young minds we engage with. Through collaboration with our partners and the community, we are building ecosystems of support that enable innovation and entrepreneurship to thrive."
+                      Through interactive community workshops, digital media campaigns, educational seminars, and direct hospital outreach programs, we empower young people and families with essential health knowledge, emotional resilience tools, and peer support networks.
                     </p>
                     <p>
-                      "Our commitment extends beyond just skills training; we are fostering a culture of integrity, empathy, and social responsibility. We want our future leaders to lead with heart and purpose, making decisions that benefit not only themselves but society as a whole."
+                      <em>"Kisobooka"</em>—meaning <strong>"It Is Possible"</strong>—serves as a beacon of hope, inspiring individuals facing mental health challenges or sickle cell conditions to seek early care, embrace solidarity, and live fulfilling lives.
                     </p>
                     <p>
-                      "We invite you to join us on this transformative journey. Together, we can build a legacy of hope and opportunity for generations to come. Your support, whether through partnership, volunteerism, or advocacy, is crucial to our mission."
+                      We warmly invite community leaders, educational institutions, healthcare professionals, and volunteers to partner with us as we expand our educational campaigns and medical support drives across Uganda.
                     </p>
                   </div>
-                )}
-
-                {!isExpanded && (
-                  <p>
-                    "We invite you to join us on this transformative journey..."
-                  </p>
                 )}
               </div>
 
@@ -440,8 +524,8 @@ const Index = () => {
               </div>
 
               <div className="mt-8 border-t border-border/50 pt-6 inline-block w-full">
-                <h4 className="text-xl font-bold text-foreground">KIRUNDA MUHAWUYA</h4>
-                <p className="text-primary font-medium">President & Founder</p>
+                <h4 className="text-xl font-bold text-foreground">SSENA HEALING AFRICA & ROTARY PARTNERSHIP</h4>
+                <p className="text-primary font-medium">Mental Health & Sickle Cell Awareness Initiative</p>
               </div>
             </div>
           </div>

@@ -67,7 +67,7 @@ const RegistrationModal = ({ children }: { children: React.ReactNode }) => {
                 <DialogHeader>
                     <DialogTitle>Register for Membership</DialogTitle>
                     <DialogDescription>
-                        Join SUYEL today. The annual registration fee is <span className="font-bold text-primary">UGX 10,000</span>.
+                        Join SSENA HEALING AFRICA today. The annual registration fee is <span className="font-bold text-primary">UGX 10,000</span>.
                     </DialogDescription>
                 </DialogHeader>
 

@@ -219,7 +219,7 @@ const DonatePay = () => {
                             <span className="hidden sm:inline">Back</span>
                         </button>
                     </div>
-                    <img src="/Suyel%20Main%20Logo.png" alt="SUYEL Logo" className="h-14 w-auto" />
+                    <img src="/Suyel%20Main%20Logo.png" alt="SSENA HEALING AFRICA Logo" className="h-14 w-auto" />
                     <div className="flex-1 flex justify-end">
                         <div className="hidden md:flex items-center gap-2 text-gray-400 text-sm font-medium">
                             <Lock className="w-4 h-4" />
@@ -234,7 +234,7 @@ const DonatePay = () => {
                     {/* Left Column: Form */}
                     <div className="lg:col-span-3 space-y-12">
                         <section className="text-center">
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">You're supporting SUYEL</h1>
+                            <h1 className="text-3xl font-bold text-gray-900 mb-2">You're supporting SSENA HEALING AFRICA</h1>
                             <p className="text-gray-500">Your donation will help us reach our target and empower more youth.</p>
                         </section>
 
@@ -437,20 +437,20 @@ const DonatePay = () => {
                                         <div className="w-6 h-6 rounded border-2 bg-primary border-primary flex items-center justify-center">
                                             <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                                         </div>
-                                        <span className="text-sm text-muted-foreground font-medium whitespace-nowrap">Sign me up for updates from SUYEL</span>
+                                        <span className="text-sm text-muted-foreground font-medium whitespace-nowrap">Sign me up for updates from SSENA HEALING AFRICA</span>
                                     </div>
                                 </div>
 
                                 <div className="bg-primary/10 border border-primary/20 p-4 rounded-xl flex items-start gap-3 shadow-md">
                                     <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                                     <p className="text-xs text-foreground leading-relaxed">
-                                        SUYEL has a <span className="font-bold underline text-primary">0% platform fee</span> for donors. Your contribution goes directly to empowering youth programs across Uganda.
+                                        SSENA HEALING AFRICA has a <span className="font-bold underline text-primary">0% platform fee</span> for donors. Your contribution goes directly to empowering youth programs across Uganda.
                                     </p>
                                 </div>
                             </div>
 
                             <p className="text-center text-[10px] text-muted-foreground leading-relaxed max-w-sm mx-auto mt-6">
-                                By clicking 'Donate now', you agree to SUYEL's Terms of Service and Privacy Notice. Learn more about our secure payment processing.
+                                By clicking 'Donate now', you agree to SSENA HEALING AFRICA's Terms of Service and Privacy Notice. Learn more about our secure payment processing.
                             </p>
                         </form>
                     </div>

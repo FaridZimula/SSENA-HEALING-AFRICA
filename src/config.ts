@@ -1,5 +1,5 @@
 /**
- * Global Configuration for SUYEL Website
+ * Global Configuration for SSENA HEALING AFRICA Website
  */
 
 // Detect environment

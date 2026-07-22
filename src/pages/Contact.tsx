@@ -231,11 +231,11 @@ const Contact = () => {
             <div className="space-y-6">
               {[
                 {
-                  q: "How can I volunteer with SUYEL?",
+                  q: "How can I volunteer with SSENA HEALING AFRICA?",
                   a: "We welcome volunteers for various programs. Fill out the contact form above or email us at ssenahealingafrica@gmail.com to learn about current opportunities.",
                 },
                 {
-                  q: "How can my organization partner with SUYEL?",
+                  q: "How can my organization partner with SSENA HEALING AFRICA?",
                   a: "We're always open to partnerships that align with our mission. Contact us to discuss collaboration opportunities.",
                 },
                 {

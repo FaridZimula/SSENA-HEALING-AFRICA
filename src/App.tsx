@@ -16,6 +16,7 @@ import SplashScreen from "@/components/SplashScreen";
 import Register from "./pages/Register";
 import Donate from "./pages/Donate";
 import DonatePay from "./pages/DonatePay";
+import BuyBook from "./pages/BuyBook";
 
 // Admin Imports
 import Login from "./pages/admin/Login";
@@ -84,6 +85,7 @@ const App = () => {
                   <Route path="/register" element={<Register />} />
                   <Route path="/donate" element={<Donate />} />
                   <Route path="/donate/pay" element={<DonatePay />} />
+                  <Route path="/buy-book" element={<BuyBook />} />
 
                   {/* Admin Routes */}
                   <Route path="/admin/login" element={<Login />} />

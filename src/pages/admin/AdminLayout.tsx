@@ -44,7 +44,7 @@ const AdminLayout = () => {
                 <div className="p-6 border-b border-border flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <img src="/SSENA LOGO.jpg" alt="SSENA HEALING AFRICA" className="w-10 h-10 object-contain rounded-lg" />
-                        <h2 className="text-xl font-bold text-primary">SUYEL Admin</h2>
+                        <h2 className="text-xl font-bold text-primary">SSENA HEALING AFRICA Admin</h2>
                     </div>
                     {/* Close button for mobile */}
                     <button className="md:hidden text-muted-foreground" onClick={() => setIsSidebarOpen(false)}>

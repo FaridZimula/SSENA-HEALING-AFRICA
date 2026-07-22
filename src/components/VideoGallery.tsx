@@ -6,72 +6,36 @@ import { Button } from "./ui/button";
 const highlightsData = [
   {
     id: "highlight-1",
-    title: "Youth Empowerment & Innovation Summit",
+    title: "Protect My Dignity: Buy a Pad for a Vulnerable Girl",
     description:
-      "Get ready for our groundbreaking community development initiatives! SSENA Healing Africa invites young leaders, innovators, and students to participate in dedicated mentorship, vocational skills training, and inclusive community support programs across Uganda. We are committed to fostering self-reliance, leadership, and sustainable community growth.",
+      "Join SSENA Healing Africa on August 14th, 2026 at Tubeyi Primary School, Bukhiende Sub County, Mbale District for our 'Protect My Dignity' charity project. We aim to reach 250 vulnerable girls by providing reusable pad donations, menstrual hygiene education, and mental health awareness. At just 10,000 UGX per pack, you can help us make periods friendly, fight stigma, and restore dignity to young girls. Be the reason! #KISOBOKA",
     images: [
-      "/LeadershipTraining1.jpg",
-      "/LeadershipTraining2.jpg",
-      "/LeadershipTraining3.jpg",
-      "/Leadership programme 2.jpeg",
-      "/Leadership Skills Training.jpeg"
+      "/PROTECT_MY_DIGNITY.jpg"
     ],
-    tags: ["Youth Mentorship", "Community Healthcare", "Skill Building"],
-    link: "/projects"
+    tags: ["Menstrual Hygiene", "Pad Donation", "Mbale District", "Mental Health"],
+    link: "/donate"
   },
   {
     id: "highlight-2",
-    title: "Ishaka Hospital Maternity & Health Support",
+    title: "Rotaract District 9213 Appreciation Recognition",
     description:
-      "Conducting dedicated health outreach to young mothers and families. Providing essential healthcare kits, hygiene supplies, and personal mentorship to support young mothers in continuing their education and pursuing their career aspirations.",
+      "DRR Alex Muwanguzi of Rotaract District 9213 presented our Director with an appreciation banner recognizing our organization's transformative work in empowering communities. To us, this is not just a banner—it is a powerful symbol that our vision and purpose are coming to life. Together, we impact more.",
     images: [
-      "/Ishaka 1.jpg",
-      "/Ishaka 2.jpg",
-      "/Ishaka 3.jpg",
-      "/Ishaka 4.jpg"
+      "/DRR_1.jpg",
+      "/DRR_2.jpg"
     ],
-    tags: ["Health Support", "Young Mothers", "Maternity Kits"],
+    tags: ["Rotaract D9213", "Recognition", "Community Impact"],
     link: "/projects"
   },
   {
     id: "highlight-3",
-    title: "Digital Literacy & Future Economy Workshop",
+    title: "Happy Birthday to Our Treasurer, Ms. Nakyewa Juliet!",
     description:
-      "Collaborating with tech leaders and Google Cloud Developers to host hands-on workshops in AI, Robotics, and digital skills, equipping Ugandan youth to excel in a rapidly evolving technological landscape.",
+      "We send warm birthday wishes to our dedicated Treasurer, Ms. Nakyewa Juliet! We deeply appreciate and acknowledge her outstanding efforts, leadership, and invaluable commitment towards the growth of SSENA Healing Africa. May you live a long, blessed life as you continue serving our community with passion.",
     images: [
-      "/IT 1.jpeg",
-      "/IT2.jpeg",
-      "/IT3.jpeg"
+      "/BIRTHDAY.webp"
     ],
-    tags: ["AI Workshops", "Robotics", "Digital Skills"],
-    link: "/projects"
-  },
-  {
-    id: "highlight-4",
-    title: "Community Outreach & Sustainable Clean Environment",
-    description:
-      "Mobilizing youth leaders and community members for market cleanups and environmental awareness in Ishaka-Bassaja market, promoting sanitation and community responsibility.",
-    images: [
-      "/Cleanup1.jpg",
-      "/Cleanup2.jpg",
-      "/Cleanup3.jpg",
-      "/Cleanup4.jpg",
-      "/Cleanup5.jpg"
-    ],
-    tags: ["Clean Environment", "Community Action", "Sanitation"],
-    link: "/projects"
-  },
-  {
-    id: "highlight-5",
-    title: "National University Leadership Training",
-    description:
-      "Providing intensive leadership skills development for student representatives from universities across Uganda in partnership with Balunywa Leadership Academy.",
-    images: [
-      "/BasogaNssete1.jpg",
-      "/BasogaNssete2.jpg",
-      "/BasogaNssete3.jpg"
-    ],
-    tags: ["University Leaders", "Leadership Training", "Youth Empowerment"],
+    tags: ["Birthday Celebration", "Giving Back", "Community Joy", "Youth Empowerment"],
     link: "/projects"
   }
 ];
@@ -124,6 +88,44 @@ const HighlightCardImageSlider = ({ images, title }: { images: string[]; title: 
   );
 };
 
+const HighlightCard = ({ highlight }: { highlight: typeof highlightsData[0] }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div
+      className="w-[88vw] max-w-[750px] lg:max-w-[850px] flex-shrink-0 snap-center bg-card border border-border rounded-[2.5rem] shadow-xl overflow-hidden p-6 sm:p-8 lg:p-10 transition-all duration-300"
+    >
+      <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        {/* Left Side: Multi-image slideshow (accommodates 1080x1080 photos & up to 12 images) */}
+        <HighlightCardImageSlider images={highlight.images} title={highlight.title} />
+
+        {/* Right Side: Content Text */}
+        <div className="lg:col-span-7 flex flex-col justify-center space-y-4">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground leading-tight">
+            {highlight.title}
+          </h3>
+
+          <p className={`text-muted-foreground text-sm sm:text-base leading-relaxed ${!isExpanded ? "line-clamp-4" : ""}`}>
+            {highlight.description}
+          </p>
+
+          {/* Action Button */}
+          <div className="pt-2 flex justify-start">
+            <Button
+              size="sm"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="rounded-xl font-bold bg-primary hover:bg-primary/90 text-white"
+            >
+              {isExpanded ? "Show Less" : "Read More"}
+              <ArrowRight className={`w-4 h-4 ml-1.5 transition-transform duration-200 ${isExpanded ? "-rotate-90" : ""}`} />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const VideoGallery = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -153,10 +155,10 @@ const VideoGallery = () => {
         {/* Section Header */}
         <div data-aos="fade-up" className="text-center max-w-3xl mx-auto mb-10 flex flex-col items-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight mb-4 text-center">
-            Our Latest Highlights
+            Our Latest Highlights & Updates
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl text-center">
-            See the impact of our programs and hear directly from the youth we empower.
+            Stay updated with our latest activities, key milestones, and ongoing community initiatives.
           </p>
         </div>
 
@@ -167,49 +169,7 @@ const VideoGallery = () => {
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 pt-2 scrollbar-none scroll-smooth px-1"
         >
           {highlightsData.map((highlight) => (
-            <div
-              key={highlight.id}
-              className="w-[88vw] max-w-[750px] lg:max-w-[850px] flex-shrink-0 snap-center bg-card border border-border rounded-[2.5rem] shadow-xl overflow-hidden p-6 sm:p-8 lg:p-10 transition-all duration-300"
-            >
-              <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                {/* Left Side: Multi-image slideshow (accommodates 1080x1080 photos & up to 12 images) */}
-                <HighlightCardImageSlider images={highlight.images} title={highlight.title} />
-
-                {/* Right Side: Content Text */}
-                <div className="lg:col-span-7 flex flex-col justify-center space-y-4">
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground leading-tight">
-                    {highlight.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed line-clamp-4">
-                    {highlight.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {highlight.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-secondary rounded-lg text-xs font-semibold text-foreground border border-border"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Button */}
-                  <div className="pt-2 flex justify-start">
-                    <Button asChild size="sm" className="rounded-xl font-bold bg-primary hover:bg-primary/90 text-white">
-                      <Link to={highlight.link}>
-                        Explore Highlight
-                        <ArrowRight className="w-4 h-4 ml-1.5" />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <HighlightCard key={highlight.id} highlight={highlight} />
           ))}
         </div>
 
