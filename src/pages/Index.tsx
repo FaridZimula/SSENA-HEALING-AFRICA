@@ -192,7 +192,7 @@ const Index = () => {
             {/* Left Side - Image Card */}
             <div data-aos="fade-right" className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-xl group">
               <img
-                src="/Milestone 2.jpg"
+                src="/Sanitary 1.webp"
                 alt="SSENA HEALING AFRICA Impact Milestone - Youth Engagement in Uganda"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
