@@ -18,17 +18,15 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Bar */}
-      <div className="bg-primary text-primary-foreground py-2 px-4 sm:px-6 lg:px-8 hidden md:block">
-        <div className="container-narrow mx-auto flex justify-between items-center text-sm font-medium">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span>+256 705 206 985 / +256 763 238 667</span>
-            </div>
-          </div>
+      {/* Top Bar - Visible on Mobile and Desktop */}
+      <div className="bg-primary text-primary-foreground py-1.5 px-3 sm:px-6 lg:px-8">
+        <div className="container-narrow mx-auto flex justify-between items-center text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2">
-            <Mail className="w-4 h-4" />
+            <Phone className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">+256 705 206 985 / +256 763 238 667</span>
+          </div>
+          <div className="hidden sm:flex items-center gap-2">
+            <Mail className="w-3.5 h-3.5 shrink-0" />
             <span>ssenahealingafrica@gmail.com</span>
           </div>
         </div>
@@ -37,13 +35,13 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav className="bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
         <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
               <img
-                src="/SSENA LOGO.jpg"
+                src="/SSENA LOGO.png"
                 alt="SSENA HEALING AFRICA Logo"
-                className="h-16 w-auto object-contain rounded-lg"
+                className="h-12 sm:h-16 w-auto object-contain"
               />
             </Link>
 
@@ -72,27 +70,23 @@ const Navbar = () => {
               </Button>
             </div>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle - Prominent green button with 3 bars */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-accent text-foreground flex items-center justify-center"
-              aria-label="Toggle Menu"
+              className="lg:hidden p-2.5 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center shadow-md transition-all active:scale-95 z-10"
+              aria-label="Toggle Navigation Menu"
             >
               {isOpen ? (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="w-6 h-6 stroke-[3]" />
               ) : (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                <Menu className="w-6 h-6 stroke-[3]" />
               )}
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="lg:hidden py-4 border-t border-border animate-fade-in bg-background">
+            <div className="lg:hidden py-4 border-t border-border animate-fade-in bg-background shadow-xl rounded-b-2xl">
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
@@ -109,15 +103,15 @@ const Navbar = () => {
                 ))}
                 <div className="px-4 py-2 border-t border-border mt-2 space-y-2">
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Phone className="w-4 h-4 flex-shrink-0" />
+                    <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
                     <span>+256 705 206 985 / +256 763 238 667</span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Mail className="w-4 h-4" />
+                    <Mail className="w-4 h-4 text-primary" />
                     <span>ssenahealingafrica@gmail.com</span>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3 mt-2">
+                <div className="grid grid-cols-2 gap-3 mt-2 px-2">
                   <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary hover:text-white">
                     <Link to="/donate" onClick={() => setIsOpen(false)}>
                       Donate
