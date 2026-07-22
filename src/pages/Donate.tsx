@@ -134,8 +134,15 @@ const Donate = () => {
                             {/* Direct Bank Account Card */}
                             <div className="bg-black text-white rounded-[2rem] p-6 border border-neutral-800 shadow-xl space-y-4">
                                 <div className="flex items-center gap-3 border-b border-neutral-800 pb-3">
-                                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-                                        <Landmark className="w-5 h-5 text-primary" />
+                                    <div className="w-10 h-10 rounded-full bg-white p-1.5 flex items-center justify-center shrink-0 border border-neutral-800 overflow-hidden">
+                                        <img
+                                            src="/DFCU LOGO.png"
+                                            onError={(e) => {
+                                                (e.currentTarget as HTMLImageElement).src = "/DFCU LOGO.jpg";
+                                            }}
+                                            alt="DFCU Bank Logo"
+                                            className="w-full h-full object-contain rounded-full"
+                                        />
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-base text-white">Direct Bank Transfer</h4>

@@ -74,6 +74,8 @@ const row1Logos = [
   { name: "Partner 6", logo: "/LOGO 6.jpg" },
   { name: "Partner 7", logo: "/LOGO 7.jpg" },
   { name: "Partner 8", logo: "/LOGO 8.jpg" },
+  { name: "Partner 19", logo: "/LOGO 19.jpg" },
+  { name: "Partner 20", logo: "/LOGO 20.jpg" },
 ];
 
 const row2Logos = [
@@ -86,6 +88,8 @@ const row2Logos = [
   { name: "Partner 15", logo: "/LOGO 15.jpg" },
   { name: "Partner 16", logo: "/LOGO 16.jpg" },
   { name: "Partner 17", logo: "/LOGO 17.jpg" },
+  { name: "Partner 21", logo: "/LOGO 21.jpg" },
+  { name: "Partner 22", logo: "/LOGO 22.jpg" },
 ];
 
 const Index = () => {
@@ -254,18 +258,18 @@ const Index = () => {
 
       {/* Parallax CTA Section */}
       <section
-        className="relative bg-fixed bg-cover bg-center py-12 md:py-20"
-        style={{ backgroundImage: "url('/Slide 1.jpg')" }}
+        className="relative bg-fixed bg-cover bg-center py-8 md:py-[55px]"
+        style={{ backgroundImage: "url('/TREES.webp')" }}
       >
         <div className="absolute inset-0 bg-black/60" />
 
         <div className="container-narrow mx-auto relative z-10 px-4">
-          <div data-aos="zoom-in" className="max-w-4xl mx-auto border border-white/30 bg-black/30 backdrop-blur-sm rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Join Ssena Healing Africa today</h2>
-            <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto">
+          <div data-aos="zoom-in" className="max-w-4xl mx-auto border border-white/30 bg-black/30 backdrop-blur-sm rounded-3xl p-6 md:p-8 text-center text-white shadow-2xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Join Ssena Healing Africa today</h2>
+            <p className="text-base md:text-lg text-white/90 mb-6 leading-relaxed max-w-2xl mx-auto">
               Be part of a thriving community that celebrates shared memories, fosters lifelong connections, and gives back. Together, we can make a difference through impactful projects, mentorship, and support for future generations.
             </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white border-none rounded-full px-10 text-lg h-14 shadow-lg hover:shadow-primary/25 transition-all duration-300" asChild>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white border-none rounded-full px-8 text-base h-12 shadow-lg hover:shadow-primary/25 transition-all duration-300" asChild>
               <Link to="/register">Register Now</Link>
             </Button>
           </div>

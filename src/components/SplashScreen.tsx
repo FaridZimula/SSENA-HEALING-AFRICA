@@ -2,22 +2,30 @@
 import React, { useEffect, useState } from "react";
 
 const SplashScreen = () => {
-    const [opacity, setOpacity] = useState(1);
+    const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
-        // Start fading out slightly before the 4s mark for smooth transition if needed,
-        // but the parent controls unmounting.
-        // Let's just keep it simple and static, waiting for parent to unmount it.
+        // Fade out smoothly starting at 3.2s so the splash screen completes precisely at 4s
+        const fadeTimer = setTimeout(() => {
+            setFadeOut(true);
+        }, 3200);
+
+        return () => clearTimeout(fadeTimer);
     }, []);
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-1000">
-            <div className="animate-pulse">
+        <div
+            className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-background transition-opacity duration-800 ease-in-out ${
+                fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
+        >
+            <div className="flex flex-col items-center gap-6 animate-pulse">
                 <img
                     src="/SSENA LOGO.jpg"
                     alt="Welcome to SSENA HEALING AFRICA"
-                    className="w-64 md:w-80 h-auto object-contain rounded-2xl shadow-xl"
+                    className="w-64 md:w-80 h-auto object-contain rounded-2xl shadow-2xl"
                 />
+                <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mt-2" />
             </div>
         </div>
     );

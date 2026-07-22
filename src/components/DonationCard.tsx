@@ -47,8 +47,15 @@ const DonationCard = ({
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 {/* Left Side: Bank Brand Info */}
                 <div className="flex items-center gap-4 text-center md:text-left">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
-                        <Building2 className="w-8 h-8" />
+                    <div className="w-16 h-16 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 border border-border shadow-sm overflow-hidden">
+                        <img
+                            src="/DFCU LOGO.png"
+                            onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).src = "/DFCU LOGO.jpg";
+                            }}
+                            alt="DFCU Bank Logo"
+                            className="max-w-full max-h-full object-contain rounded-xl"
+                        />
                     </div>
                     <div>
                         <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
