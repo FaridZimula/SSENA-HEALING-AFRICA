@@ -150,8 +150,8 @@ const VideoGallery = () => {
   };
 
   return (
-    <section className="px-4 sm:px-6 lg:px-8 py-16 bg-background">
-      <div className="container-narrow mx-auto">
+    <section className="px-4 sm:px-6 lg:px-8 py-16 bg-background w-full max-w-full overflow-hidden">
+      <div className="container-narrow mx-auto w-full max-w-full overflow-hidden">
         {/* Section Header */}
         <div data-aos="fade-up" className="text-center max-w-3xl mx-auto mb-10 flex flex-col items-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight mb-4 text-center">

@@ -33,10 +33,10 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col w-full max-w-[100vw] overflow-x-hidden">
       <SEO />
       <Navbar />
-      <main className="flex-1 pt-20 md:pt-32">{children}</main>
+      <main className="flex-1 pt-20 md:pt-32 w-full max-w-[100vw] overflow-x-hidden">{children}</main>
       <Footer />
     </div>
   );

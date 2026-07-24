@@ -17,7 +17,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full max-w-[100vw] overflow-x-clip">
       {/* Top Bar - Visible on Mobile and Desktop */}
       <div className="bg-primary text-primary-foreground py-1.5 px-3 sm:px-6 lg:px-8">
         <div className="container-narrow mx-auto flex justify-between items-center text-xs sm:text-sm font-medium">

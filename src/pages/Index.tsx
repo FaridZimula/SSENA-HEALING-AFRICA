@@ -410,8 +410,8 @@ const Index = () => {
       </section>
 
       {/* Featured Projects */}
-      <section className="px-4 sm:px-6 lg:px-8 py-6 bg-background">
-        <div className="bg-secondary rounded-[2.5rem] py-16 shadow-xl">
+      <section className="px-4 sm:px-6 lg:px-8 py-6 bg-background w-full max-w-full overflow-hidden">
+        <div className="bg-secondary rounded-[2.5rem] py-16 shadow-xl w-full max-w-full overflow-hidden">
           <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
             <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12">
 
@@ -423,7 +423,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="flex flex-row overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-6 snap-x snap-mandatory scrollbar-none px-4 -mx-4 sm:px-6 sm:-mx-6 md:px-0 md:mx-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="flex flex-row overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-6 snap-x snap-mandatory scrollbar-none w-full px-2 sm:px-4 md:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {sortedProjects.slice(0, 3).map((project, index) => (
                 <div key={index} className="w-[288px] max-w-[88vw] shrink-0 snap-start flex justify-center mx-auto">
                   <ProjectCard
