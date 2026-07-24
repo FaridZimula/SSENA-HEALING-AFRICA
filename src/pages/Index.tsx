@@ -270,89 +270,89 @@ const Index = () => {
       </section>
 
       {/* Featured Publications & Books Section */}
-      <section className="section-padding bg-background">
-        <div className="container-narrow mx-auto px-4">
-          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+      <section className="section-padding bg-background w-full max-w-full overflow-hidden">
+        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-full overflow-hidden">
+          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-10 px-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 break-words">
               Featured Books & Publications
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               Empowering communities with vital knowledge on mental health, trauma recovery, and child protection.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch w-full max-w-full">
             {/* Book 1: Breaking The Circle */}
-            <div data-aos="fade-right" className="bg-card border border-border rounded-[2.5rem] p-6 sm:p-8 lg:p-10 shadow-2xl flex flex-col justify-between h-full relative group">
-              <div className="space-y-6">
+            <div data-aos="fade-right" className="bg-card border border-border rounded-3xl sm:rounded-[2.5rem] p-4 sm:p-6 lg:p-8 shadow-2xl flex flex-col justify-between h-full relative group w-full max-w-full box-border overflow-hidden">
+              <div className="space-y-5 w-full max-w-full overflow-hidden">
                 {/* Book Cover Image */}
-                <div className="relative w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30">
+                <div className="relative w-full max-w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30 flex items-center justify-center">
                   <img
                     src="/BREAKING_THE_CIRCLE.webp"
                     alt="Breaking The Circle Mental Health Book"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 right-4 bg-primary text-white font-extrabold px-4 py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
+                  <div className="absolute top-3 right-3 bg-primary text-white font-extrabold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
                     UGX 30,000
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight">
+                <div className="space-y-2.5 w-full">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground leading-tight break-words">
                     "Breaking The Circle"
                   </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed break-words">
                     <strong>"Breaking The Circle"</strong> is an empowering mental health guide published by <strong>SSENA Healing Africa</strong>. Designed to support youth, families, and communities, this book offers practical coping mechanisms, emotional healing strategies, and tools to overcome life's silent struggles and stigma.
                   </p>
-                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed break-words">
                     Every copy purchased directly supports our ongoing community mental health outreach programs and educational book donations across Ugandan schools.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-6">
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold py-6 text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all" asChild>
-                  <Link to="/buy-book?book=breaking-the-circle">
-                    Order & Pay Online — UGX 30,000
-                    <ArrowRight className="w-5 h-5 ml-2" />
+              <div className="pt-5 w-full">
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold h-auto py-3.5 px-4 text-sm sm:text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all text-center whitespace-normal break-words" asChild>
+                  <Link to="/buy-book?book=breaking-the-circle" className="flex items-center justify-center text-center gap-2 w-full">
+                    <span>Order & Pay Online — UGX 30,000</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                   </Link>
                 </Button>
               </div>
             </div>
 
             {/* Book 2: Ending Child Sexual Violence & Trauma Awareness */}
-            <div data-aos="fade-left" className="bg-card border border-border rounded-[2.5rem] p-6 sm:p-8 lg:p-10 shadow-2xl flex flex-col justify-between h-full relative group">
-              <div className="space-y-6">
+            <div data-aos="fade-left" className="bg-card border border-border rounded-3xl sm:rounded-[2.5rem] p-4 sm:p-6 lg:p-8 shadow-2xl flex flex-col justify-between h-full relative group w-full max-w-full box-border overflow-hidden">
+              <div className="space-y-5 w-full max-w-full overflow-hidden">
                 {/* Book Cover Image */}
-                <div className="relative w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30">
+                <div className="relative w-full max-w-full aspect-[1170/936] rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-muted/30 flex items-center justify-center">
                   <img
                     src="/CHILDHOOD.webp"
                     alt="Echoes of a Stolen Childhood Book"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 right-4 bg-primary text-white font-extrabold px-4 py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
+                  <div className="absolute top-3 right-3 bg-primary text-white font-extrabold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm shadow-lg">
                     UGX 30,000
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight">
+                <div className="space-y-2.5 w-full">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground leading-tight break-words">
                     "Echoes of a Stolen Childhood"
                   </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed break-words">
                     In our continued efforts to end <strong>Child Sexual Violence</strong>, our Founder authored this crucial book to raise awareness about child sexual abuse, protection, and how unaddressed childhood traumas profoundly shape adulthood.
                   </p>
-                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed break-words">
                     Get copies for your children, loved ones, and yourself to gain deep insights into healing emotional wounds and protecting future generations.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-6">
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold py-6 text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all" asChild>
-                  <Link to="/buy-book?book=childhood">
-                    Order & Pay Online — UGX 30,000
-                    <ArrowRight className="w-5 h-5 ml-2" />
+              <div className="pt-5 w-full">
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold h-auto py-3.5 px-4 text-sm sm:text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all text-center whitespace-normal break-words" asChild>
+                  <Link to="/buy-book?book=childhood" className="flex items-center justify-center text-center gap-2 w-full">
+                    <span>Order & Pay Online — UGX 30,000</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                   </Link>
                 </Button>
               </div>
