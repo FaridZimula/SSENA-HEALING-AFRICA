@@ -33,25 +33,25 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <nav className="bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
-        <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+      <nav className="bg-background/95 backdrop-blur-md border-b border-border shadow-sm w-full">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 w-full">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 shrink-0">
               <img
                 src="/SSENA LOGO.png"
                 alt="SSENA HEALING AFRICA Logo"
-                className="h-12 sm:h-16 w-auto object-contain"
+                className="h-11 sm:h-16 w-auto object-contain shrink-0"
               />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop Navigation Links */}
+            <div className="hidden xl:flex items-center gap-1 mx-auto">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200 ${location.pathname === link.path
+                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${location.pathname === link.path
                     ? "bg-black text-white shadow-md"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent"
                     }`}
@@ -61,39 +61,43 @@ const Navbar = () => {
               ))}
             </div>
 
-            <div className="hidden lg:flex items-center gap-3">
-              <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-white">
-                <Link to="/donate">Donate</Link>
-              </Button>
-              <Button asChild>
-                <Link to="/register">Register</Link>
-              </Button>
-            </div>
+            {/* Right Container: Action Buttons + Prominent Green Hamburger Menu */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
+              <div className="hidden sm:flex items-center gap-2 shrink-0">
+                <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-white">
+                  <Link to="/donate">Donate</Link>
+                </Button>
+                <Button asChild>
+                  <Link to="/register">Register</Link>
+                </Button>
+              </div>
 
-            {/* Mobile Menu Toggle - Prominent green button with 3 bars */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center shadow-md transition-all active:scale-95 z-10"
-              aria-label="Toggle Navigation Menu"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6 stroke-[3]" />
-              ) : (
-                <Menu className="w-6 h-6 stroke-[3]" />
-              )}
-            </button>
+              {/* Prominent Green Menu Button - PINNED TO TOP RIGHT ALWAYS */}
+              <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2.5 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center shadow-lg transition-all active:scale-95 z-50 shrink-0 cursor-pointer border border-white/20"
+                aria-label="Toggle Navigation Menu"
+              >
+                {isOpen ? (
+                  <X className="w-6 h-6 stroke-[3]" />
+                ) : (
+                  <Menu className="w-6 h-6 stroke-[3]" />
+                )}
+              </button>
+            </div>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Navigation Dropdown Menu - Opens cleanly on all screens */}
           {isOpen && (
-            <div className="lg:hidden py-4 border-t border-border animate-fade-in bg-background shadow-xl rounded-b-2xl">
-              <div className="flex flex-col gap-2">
+            <div className="py-4 border-t border-border animate-fade-in bg-background shadow-2xl rounded-b-2xl w-full">
+              <div className="flex flex-col gap-1.5">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${location.pathname === link.path
+                    className={`px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${location.pathname === link.path
                       ? "bg-black text-white shadow-md"
                       : "text-muted-foreground hover:text-foreground hover:bg-accent"
                       }`}
@@ -101,23 +105,23 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
-                <div className="px-4 py-2 border-t border-border mt-2 space-y-2">
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                <div className="px-4 py-3 border-t border-border mt-2 space-y-2">
+                  <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
                     <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
                     <span>+256 705 206 985 / +256 763 238 667</span>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                  <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
                     <Mail className="w-4 h-4 text-primary" />
                     <span>ssenahealingafrica@gmail.com</span>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3 mt-2 px-2">
-                  <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                  <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold">
                     <Link to="/donate" onClick={() => setIsOpen(false)}>
                       Donate
                     </Link>
                   </Button>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full font-bold">
                     <Link to="/register" onClick={() => setIsOpen(false)}>
                       Register
                     </Link>

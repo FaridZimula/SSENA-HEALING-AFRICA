@@ -144,15 +144,15 @@ const BuyBook = () => {
             </Link>
           </div>
 
-          {/* Book Selection Tabs */}
-          <div className="mb-8 max-w-xl mx-auto">
-            <div className="bg-muted/50 p-1.5 rounded-2xl border border-border grid grid-cols-2 gap-1 text-center">
+          {/* Book Selection Tabs - Centered Middle Alignment on Mobile & Desktop */}
+          <div className="mb-8 w-full max-w-xl mx-auto flex justify-center items-center px-2">
+            <div className="w-full bg-muted/50 p-1.5 rounded-2xl border border-border grid grid-cols-2 gap-1.5 text-center items-center justify-center">
               {BOOKS.map((b) => (
                 <button
                   key={b.id}
                   type="button"
                   onClick={() => setSelectedBookId(b.id)}
-                  className={`py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  className={`py-3 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center text-center leading-tight ${
                     selectedBookId === b.id
                       ? "bg-card text-foreground shadow-md border border-border"
                       : "text-muted-foreground hover:text-foreground"

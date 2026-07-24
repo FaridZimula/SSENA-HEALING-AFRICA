@@ -425,7 +425,7 @@ const Index = () => {
 
             <div className="flex flex-row overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-6 snap-x snap-mandatory scrollbar-none px-4 -mx-4 sm:px-6 sm:-mx-6 md:px-0 md:mx-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {sortedProjects.slice(0, 3).map((project, index) => (
-                <div key={index} className="w-[85vw] sm:w-[380px] md:w-auto shrink-0 snap-start">
+                <div key={index} className="w-[288px] max-w-[88vw] shrink-0 snap-start flex justify-center mx-auto">
                   <ProjectCard
                     title={project.title}
                     description={project.shortDescription}
