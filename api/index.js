@@ -1,6 +1,14 @@
 import mongoose from 'mongoose';
 import axios from 'axios';
 import crypto from 'crypto';
+import { createClient } from '@supabase/supabase-js';
+
+// Supabase Client Helper
+const getSupabase = (env) => {
+    const url = env.SUPABASE_URL || env.NEXT_PUBLIC_SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://kioxulpdazbgxyoumfqt.supabase.co';
+    const key = env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_ANON_KEY || env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_CwSyilG5fVcfXly-rDm8ig_wY-UEjlH';
+    return createClient(url, key);
+};
 
 // MongoDB Connection Cache
 let cachedDb = null;
@@ -177,14 +185,16 @@ export default async function handler(req, res) {
     const VERSION = "1.0.9 - Total Fix";
 
     try {
-        // Fallback for debugging Vercel env issues
-        const mongoUri = process.env.MONGODB_URI || "mongodb+srv://suyel_admin:SuyelAdmin2026%21@cluster0.qlvgg2q.mongodb.net/suyel_db?retryWrites=true&w=majority&appName=Cluster0";
-
-        if (!process.env.MONGODB_URI) {
-            console.log('Using hardcoded fallback URI');
+        // Optional MongoDB connection
+        if (process.env.MONGODB_URI) {
+            try {
+                await connectToDatabase(process.env.MONGODB_URI);
+            } catch (mErr) {
+                console.warn('MongoDB connection note:', mErr.message);
+            }
         }
 
-        await connectToDatabase(mongoUri);
+        const supabase = getSupabase(process.env);
 
         // ROUTE: GET /status
         if (path === '/status' && req.method === 'GET') {
@@ -229,9 +239,17 @@ export default async function handler(req, res) {
             }
 
             try {
-                const donationData = { ...req.body, status: paymentStatus, transactionRef };
-                const newDonation = new Donation(donationData);
-                await newDonation.save();
+                await supabase.from('donations').insert([{
+                    amount: numAmount,
+                    phone,
+                    provider: provider || 'mtn',
+                    email,
+                    first_name: firstName,
+                    last_name: lastName,
+                    is_anonymous: isAnonymous,
+                    status: paymentStatus,
+                    transaction_ref: transactionRef
+                }]);
             } catch (dbErr) {
                 console.warn('DB note:', dbErr.message);
             }
@@ -267,6 +285,24 @@ export default async function handler(req, res) {
                 const transactionRef = paymentResult.data?.transactionId || `BK-${Date.now()}`;
                 const checkoutUrl = paymentResult.data?.checkout_url || null;
                 const paymentStatus = paymentResult.data?.status || 'pending';
+
+                try {
+                    await supabase.from('orders').insert([{
+                        full_name: fullName,
+                        phone,
+                        email,
+                        delivery_address: deliveryAddress,
+                        book_id: bookId,
+                        book_title: bookTitle,
+                        quantity: qty,
+                        total_amount: totalAmount,
+                        provider: provider || 'mtn',
+                        status: paymentStatus,
+                        transaction_ref: transactionRef
+                    }]);
+                } catch (dbErr) {
+                    console.warn('DB order note:', dbErr.message);
+                }
 
                 return res.status(201).json({
                     success: true,
