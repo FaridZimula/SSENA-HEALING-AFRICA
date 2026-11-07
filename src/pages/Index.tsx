@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import DonationCard from "@/components/DonationCard";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Users, Heart, Target, ArrowRight, Globe, BookOpen, Briefcase } from "lucide-react";
+import { Users, Heart, Target, ArrowRight, Globe, BookOpen, Briefcase, Smartphone } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-youth.jpg";
 // Images are now loaded from the public directory using static paths
@@ -13,6 +13,7 @@ import ProjectCard from "@/components/ProjectCard";
 import VideoGallery from "@/components/VideoGallery";
 import CountUp from "@/components/CountUp";
 import SEO from "@/components/SEO";
+import QuickBuyBookModal, { BookItem } from "@/components/QuickBuyBookModal";
 
 const stats = [
   { number: "5,000+", label: "Youth Empowered", icon: Users },
@@ -97,6 +98,14 @@ const row2Logos = [
 const Index = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedBookForBuy, setSelectedBookForBuy] = useState<BookItem | null>(null);
+  const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
+
+  const handleOpenBuyBook = (book: BookItem) => {
+    setSelectedBookForBuy(book);
+    setIsBuyModalOpen(true);
+  };
+
   const { projects, partners } = useData();
   
   // Enforce the exact original order for the featured projects
@@ -310,13 +319,29 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="pt-5 w-full">
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold h-auto py-3.5 px-4 text-sm sm:text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all text-center whitespace-normal break-words" asChild>
-                  <Link to="/buy-book?book=breaking-the-circle" className="flex items-center justify-center text-center gap-2 w-full">
-                    <span>Order & Pay Online — UGX 30,000</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                  </Link>
+              <div className="pt-5 w-full space-y-2">
+                <Button
+                  size="lg"
+                  onClick={() => handleOpenBuyBook({
+                    id: "breaking-the-circle",
+                    title: "Breaking The Circle",
+                    cover: "/BREAKING_THE_CIRCLE.webp",
+                    price: 30000
+                  })}
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold h-auto py-3.5 px-4 text-sm sm:text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all text-center whitespace-normal break-words cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  <span>Buy with Mobile Money — UGX 30,000</span>
                 </Button>
+                <div className="text-center">
+                  <Link
+                    to="/buy-book?book=breaking-the-circle"
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors underline font-medium inline-flex items-center gap-1"
+                  >
+                    <span>More details & bulk orders</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -348,13 +373,29 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="pt-5 w-full">
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold h-auto py-3.5 px-4 text-sm sm:text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all text-center whitespace-normal break-words" asChild>
-                  <Link to="/buy-book?book=childhood" className="flex items-center justify-center text-center gap-2 w-full">
-                    <span>Order & Pay Online — UGX 30,000</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                  </Link>
+              <div className="pt-5 w-full space-y-2">
+                <Button
+                  size="lg"
+                  onClick={() => handleOpenBuyBook({
+                    id: "childhood",
+                    title: "Echoes of a Stolen Childhood",
+                    cover: "/CHILDHOOD.webp",
+                    price: 30000
+                  })}
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-extrabold h-auto py-3.5 px-4 text-sm sm:text-base rounded-full shadow-lg hover:shadow-primary/30 transition-all text-center whitespace-normal break-words cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  <span>Buy with Mobile Money — UGX 30,000</span>
                 </Button>
+                <div className="text-center">
+                  <Link
+                    to="/buy-book?book=childhood"
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors underline font-medium inline-flex items-center gap-1"
+                  >
+                    <span>More details & bulk orders</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -561,6 +602,13 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Quick Buy Book Modal with Mobile Money */}
+      <QuickBuyBookModal
+        book={selectedBookForBuy}
+        isOpen={isBuyModalOpen}
+        onClose={() => setIsBuyModalOpen(false)}
+      />
     </Layout>
   );
 };

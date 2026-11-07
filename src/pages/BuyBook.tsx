@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { API_URL } from "@/config";
 import {
   BookOpen,
   ShoppingBag,
@@ -17,7 +18,10 @@ import {
   ChevronLeft,
   ShieldCheck,
   Lock,
-  Truck
+  Truck,
+  ExternalLink,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 
 const UNIT_PRICE = 30000;
@@ -68,6 +72,8 @@ const BuyBook = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [orderRef, setOrderRef] = useState<string>("");
+  const [checkoutUrl, setCheckoutUrl] = useState<string>("");
+  const [paymentStatus, setPaymentStatus] = useState<"pending" | "completed" | "failed">("pending");
 
   const totalAmount = quantity * UNIT_PRICE;
 
@@ -79,7 +85,44 @@ const BuyBook = () => {
     setQuantity((prev) => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Poll for payment completion when order is initiated
+  useEffect(() => {
+    if (!orderRef || paymentStatus !== "pending" || !isSuccess) return;
+
+    let attempts = 0;
+    const interval = setInterval(async () => {
+      attempts++;
+      if (attempts > 40) { // stop polling after ~2 minutes
+        clearInterval(interval);
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_URL}/payment-status/${encodeURIComponent(orderRef)}`);
+        if (res.ok) {
+          const json = await res.json();
+          const status = json.status || json.data?.status;
+          if (status === "completed" || status === "success") {
+            setPaymentStatus("completed");
+            toast({
+              title: "Payment Received!",
+              description: "Your Mobile Money payment has been confirmed. Thank you!",
+            });
+            clearInterval(interval);
+          } else if (status === "failed") {
+            setPaymentStatus("failed");
+            clearInterval(interval);
+          }
+        }
+      } catch (e) {
+        // Ignore polling network glitches
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [orderRef, paymentStatus, isSuccess, toast]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!fullName.trim()) {
@@ -111,17 +154,48 @@ const BuyBook = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API authorization call
-    setTimeout(() => {
-      const generatedRef = "BK-" + Math.floor(100000 + Math.random() * 900000);
-      setOrderRef(generatedRef);
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      toast({
-        title: "Order Initiated!",
-        description: `Please check ${phone} for a Mobile Money prompt to complete your payment of UGX ${totalAmount.toLocaleString()}.`,
+    try {
+      const response = await fetch(`${API_URL}/buy-book`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          bookId: selectedBook.id,
+          bookTitle: selectedBook.title,
+          quantity,
+          amount: totalAmount,
+          phone,
+          provider: paymentMethod,
+          fullName,
+          email,
+          deliveryAddress,
+        }),
       });
-    }, 1500);
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || data.message || "Failed to initiate payment");
+      }
+
+      const generatedRef = data.transactionId || ("BK-" + Math.floor(100000 + Math.random() * 900000));
+      setOrderRef(generatedRef);
+      setCheckoutUrl(data.checkoutUrl || "");
+      setPaymentStatus("pending");
+      setIsSuccess(true);
+
+      toast({
+        title: "Payment Prompt Sent!",
+        description: `Please check ${phone} for a Mobile Money prompt to complete payment of UGX ${totalAmount.toLocaleString()}.`,
+      });
+    } catch (err: any) {
+      toast({
+        title: "Order Failed",
+        description: err.message || "Could not initiate payment. Please check your phone number and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -165,26 +239,69 @@ const BuyBook = () => {
           </div>
 
           {isSuccess ? (
-            /* Success State */
+            /* Success / Pending Prompt State */
             <div className="max-w-2xl mx-auto bg-card border border-border rounded-3xl p-8 md:p-12 shadow-2xl text-center space-y-6 animate-scale-in">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto text-primary">
-                <CheckCircle2 className="w-12 h-12" />
+              <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-colors ${
+                paymentStatus === "completed"
+                  ? "bg-emerald-500/10 text-emerald-600"
+                  : paymentStatus === "failed"
+                  ? "bg-rose-500/10 text-rose-600"
+                  : "bg-primary/10 text-primary"
+              }`}>
+                {paymentStatus === "completed" ? (
+                  <CheckCircle2 className="w-12 h-12 text-emerald-600 animate-bounce" />
+                ) : paymentStatus === "failed" ? (
+                  <AlertCircle className="w-12 h-12 text-rose-600" />
+                ) : (
+                  <Smartphone className="w-10 h-10 animate-pulse text-primary" />
+                )}
               </div>
 
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
-                  Order ID: #{orderRef}
+                  Transaction: #{orderRef}
                 </span>
-                <h2 className="text-3xl font-extrabold text-foreground">
-                  Payment Prompt Sent!
-                </h2>
-                <p className="text-muted-foreground text-base max-w-md mx-auto">
-                  A Mobile Money push prompt has been initiated to your phone{" "}
-                  <strong className="text-foreground">{phone}</strong>. Please check your handset and enter your PIN to authorize payment of{" "}
-                  <strong className="text-primary font-bold">
-                    UGX {totalAmount.toLocaleString()}
-                  </strong>.
-                </p>
+
+                {paymentStatus === "completed" ? (
+                  <>
+                    <h2 className="text-3xl font-extrabold text-emerald-600">
+                      Payment Confirmed!
+                    </h2>
+                    <p className="text-muted-foreground text-base max-w-md mx-auto">
+                      Thank you <strong className="text-foreground">{fullName}</strong>! Your payment of{" "}
+                      <strong className="text-foreground font-bold">
+                        UGX {totalAmount.toLocaleString()}
+                      </strong>{" "}
+                      was received. We are preparing your order for delivery.
+                    </p>
+                  </>
+                ) : paymentStatus === "failed" ? (
+                  <>
+                    <h2 className="text-3xl font-extrabold text-rose-600">
+                      Payment Not Completed
+                    </h2>
+                    <p className="text-muted-foreground text-base max-w-md mx-auto">
+                      The transaction was not completed or timed out. Please try again or open the web checkout below.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="text-3xl font-extrabold text-foreground">
+                      Check Your Handset!
+                    </h2>
+                    <p className="text-muted-foreground text-base max-w-md mx-auto">
+                      A Mobile Money push prompt has been sent to{" "}
+                      <strong className="text-foreground">{phone}</strong>. Please enter your PIN to approve payment of{" "}
+                      <strong className="text-primary font-bold">
+                        UGX {totalAmount.toLocaleString()}
+                      </strong>.
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-xs font-semibold text-primary pt-1">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Waiting for PIN authorization on your phone...</span>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="bg-muted/50 border border-border rounded-2xl p-6 text-left space-y-3 text-sm">
@@ -212,10 +329,25 @@ const BuyBook = () => {
                 </div>
               </div>
 
+              {checkoutUrl && paymentStatus !== "completed" && (
+                <div className="pt-1">
+                  <a
+                    href={checkoutUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-xs text-primary hover:underline font-bold"
+                  >
+                    <span>Didn't receive prompt? Click here to open Web Checkout</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
                 <Button
                   onClick={() => {
                     setIsSuccess(false);
+                    setPaymentStatus("pending");
                     setQuantity(1);
                   }}
                   variant="outline"

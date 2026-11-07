@@ -89,51 +89,71 @@ const partnerSchema = new mongoose.Schema({
 
 const Partner = mongoose.models.Partner || mongoose.model('Partner', partnerSchema);
 
-// Helper to process MarzPay payment
-const processMarzPayPayment = async (amount, phone, provider, env) => {
-    // Fallback values for Vercel env issues
-    const apiUrl = env.MARZ_PAY_API_URL || "https://wallet.wearemarz.com/api/v1";
-    const apiKey = env.MARZ_PAY_API_KEY || "marz_ndmGyml5LbyynXLF";
-    const authHeader = env.MARZ_PAY_AUTH_HEADER || "bWFyel9uZG1HeW1sNUxieXluWExGOkVNSkNpT1FLeTNSZ1JXb2Z0dUJTMEpiNkxUR2JvbHZz";
+// Helper to process LapterPay Mobile Money payment
+const processLapterPayPayment = async ({ amount, phone, provider, description }, env) => {
+    const apiUrl = env.LAPTER_PAY_API_URL || 'https://pay.laptertech.store/api/v1';
+    const apiKey = env.LAPTER_PAY_API_KEY || 'tp_live_3fb7a9d53e4e3946f87004f727c0656c0051bf25d9101e99';
 
-    if (!env.MARZ_PAY_API_URL) console.log('Using hardcoded MarzPay API URL');
-
-    // Format phone number to +256XXXXXXXXX
-    let formattedPhone = phone;
-    if (phone.startsWith('0')) {
-        formattedPhone = '+256' + phone.substring(1);
-    } else if (phone.startsWith('7')) {
-        formattedPhone = '+256' + phone;
-    } else if (phone.startsWith('256')) {
-        formattedPhone = '+' + phone;
+    // Format phone number to 256XXXXXXXXX
+    let cleanPhone = String(phone || '').replace(/[^0-9]/g, '');
+    if (cleanPhone.startsWith('0')) {
+        cleanPhone = '256' + cleanPhone.substring(1);
+    } else if (cleanPhone.startsWith('7')) {
+        cleanPhone = '256' + cleanPhone;
+    } else if (cleanPhone.length === 9) {
+        cleanPhone = '256' + cleanPhone;
     }
 
-    try {
-        const endpoint = `${apiUrl}/collect-money`.replace(/([^:]\/)\/+/g, "$1");
-        const payload = {
-            amount: parseInt(amount),
-            phone_number: formattedPhone,
-            provider: provider.toUpperCase(),
-            currency: 'UGX',
-            country: 'UG',
-            description: 'Donation to SUYEL',
-            reference: crypto.randomUUID(),
-            callback_url: 'https://suyel.org/api/payments/callback'
-        };
+    let paymentMethod = 'MTN Mobile Money';
+    const provLower = String(provider || '').toLowerCase();
+    if (provLower.includes('airtel')) {
+        paymentMethod = 'Airtel Money';
+    } else {
+        paymentMethod = 'MTN Mobile Money';
+    }
 
-        const response = await axios.post(endpoint, payload, {
+    const payload = {
+        amount: Math.round(Number(amount)),
+        currency: 'UGX',
+        payment_method: paymentMethod,
+        customer_identifier: cleanPhone,
+        description: description || 'Payment - SSENA HEALING AFRICA'
+    };
+
+    const idempotencyKey = crypto.randomUUID ? crypto.randomUUID() : `idemp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+
+    try {
+        const response = await axios.post(`${apiUrl}/payments/initialize`, payload, {
             headers: {
-                'Authorization': `Basic ${authHeader}`,
-                'X-API-KEY': apiKey,
+                'x-api-key': apiKey,
+                'Idempotency-Key': idempotencyKey,
                 'Content-Type': 'application/json'
             },
-            timeout: 60000
+            timeout: 30000
         });
-
         return response.data;
     } catch (error) {
-        console.error('MarzPay API Error:', error.response?.data || error.message);
-        throw new Error(error.response?.data?.message || error.message);
+        const errMessage = error.response?.data?.error || error.response?.data?.message || error.message;
+        console.error('LapterPay API Error:', errMessage);
+        throw new Error(errMessage);
+    }
+};
+
+const checkLapterPayStatus = async (transactionId, env) => {
+    const apiUrl = env.LAPTER_PAY_API_URL || 'https://pay.laptertech.store/api/v1';
+    const apiKey = env.LAPTER_PAY_API_KEY || 'tp_live_3fb7a9d53e4e3946f87004f727c0656c0051bf25d9101e99';
+
+    try {
+        const response = await axios.get(`${apiUrl}/payments/${encodeURIComponent(transactionId)}`, {
+            headers: {
+                'x-api-key': apiKey
+            },
+            timeout: 15000
+        });
+        return response.data;
+    } catch (error) {
+        const errMessage = error.response?.data?.error || error.response?.data?.message || error.message;
+        throw new Error(errMessage);
     }
 };
 
@@ -178,32 +198,116 @@ export default async function handler(req, res) {
 
         // ROUTE: POST /donate
         if (path === '/donate' && req.method === 'POST') {
-            const { amount, phone, provider } = req.body;
+            const { amount, phone, provider, firstName, lastName, isAnonymous } = req.body;
+            const numAmount = parseFloat(amount);
+
+            if (!numAmount || numAmount < 1000) {
+                return res.status(400).json({ error: 'Minimum donation amount is UGX 1,000.' });
+            }
 
             let paymentStatus = 'PENDING';
             let transactionRef = null;
+            let checkoutUrl = null;
 
-            if (provider === 'mtn' || provider === 'airtel') {
+            if (provider === 'mtn' || provider === 'airtel' || !provider || provider === 'mobile_money') {
                 try {
-                    const paymentResult = await processMarzPayPayment(amount, phone, provider, process.env);
-                    transactionRef = paymentResult.transaction_id || paymentResult.reference;
-                    paymentStatus = 'INITIATED';
+                    const donorName = isAnonymous ? 'Anonymous Donor' : `${firstName || ''} ${lastName || ''}`.trim() || 'Supporter';
+                    const paymentResult = await processLapterPayPayment({
+                        amount: numAmount,
+                        phone,
+                        provider: provider || 'mtn',
+                        description: `Donation: UGX ${numAmount.toLocaleString()} from ${donorName}`
+                    }, process.env);
+
+                    transactionRef = paymentResult.data?.transactionId || `DON-${Date.now()}`;
+                    checkoutUrl = paymentResult.data?.checkout_url || null;
+                    paymentStatus = paymentResult.data?.status || 'pending';
                 } catch (paymentErr) {
                     console.error('Payment Error:', paymentErr.message);
                     return res.status(400).json({ error: paymentErr.message });
                 }
             }
 
-            const donationData = { ...req.body, status: paymentStatus, transactionRef };
-            const newDonation = new Donation(donationData);
-            await newDonation.save();
+            try {
+                const donationData = { ...req.body, status: paymentStatus, transactionRef };
+                const newDonation = new Donation(donationData);
+                await newDonation.save();
+            } catch (dbErr) {
+                console.warn('DB note:', dbErr.message);
+            }
 
             return res.status(201).json({
-                message: 'Donation initiated',
-                donationId: newDonation._id,
+                success: true,
+                message: 'Payment collection prompt sent to your mobile phone. Please enter your PIN to approve.',
+                transactionId: transactionRef,
+                checkoutUrl,
                 status: paymentStatus,
-                transactionRef: transactionRef
+                amount: numAmount
             });
+        }
+
+        // ROUTE: POST /buy-book
+        if (path === '/buy-book' && req.method === 'POST') {
+            const { bookId, bookTitle, quantity, amount, phone, provider, fullName, email, deliveryAddress } = req.body;
+            const qty = parseInt(quantity) || 1;
+            const totalAmount = parseInt(amount) || (qty * 30000);
+
+            if (!phone || String(phone).replace(/[^0-9]/g, '').length < 9) {
+                return res.status(400).json({ error: 'Please enter a valid MTN or Airtel Mobile Money phone number.' });
+            }
+
+            try {
+                const paymentResult = await processLapterPayPayment({
+                    amount: totalAmount,
+                    phone,
+                    provider: provider || 'mtn',
+                    description: `Book Order: ${qty}x "${bookTitle || 'Book'}" - ${fullName}`
+                }, process.env);
+
+                const transactionRef = paymentResult.data?.transactionId || `BK-${Date.now()}`;
+                const checkoutUrl = paymentResult.data?.checkout_url || null;
+                const paymentStatus = paymentResult.data?.status || 'pending';
+
+                return res.status(201).json({
+                    success: true,
+                    message: `USSD PIN prompt sent to ${phone}. Enter your Mobile Money PIN to complete payment of UGX ${totalAmount.toLocaleString()}.`,
+                    transactionId: transactionRef,
+                    checkoutUrl,
+                    status: paymentStatus,
+                    order: {
+                        bookId,
+                        bookTitle,
+                        quantity: qty,
+                        totalAmount,
+                        fullName,
+                        phone,
+                        deliveryAddress
+                    }
+                });
+            } catch (paymentErr) {
+                return res.status(400).json({ error: paymentErr.message });
+            }
+        }
+
+        // ROUTE: GET /payment-status/:id
+        if (path.startsWith('/payment-status') && req.method === 'GET') {
+            const txId = path.replace('/payment-status/', '').replace('/payment-status', '');
+            try {
+                const statusResult = await checkLapterPayStatus(txId, process.env);
+                return res.json({
+                    success: true,
+                    status: statusResult.data?.status || 'pending',
+                    data: statusResult.data
+                });
+            } catch (err) {
+                return res.status(400).json({ success: false, error: err.message });
+            }
+        }
+
+        // ROUTE: POST /payments/webhook
+        if (path === '/payments/webhook' && req.method === 'POST') {
+            console.log('LapterPay Webhook:', req.body);
+            return res.status(200).json({ received: true });
         }
 
         // ROUTE: POST /register

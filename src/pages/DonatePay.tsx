@@ -13,7 +13,9 @@ import {
     ChevronLeft,
     ShieldCheck,
     Lock,
-    Landmark
+    Landmark,
+    ExternalLink,
+    AlertCircle
 } from "lucide-react";
 
 import { API_URL } from "@/config";
@@ -31,6 +33,9 @@ const DonatePay = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [transactionId, setTransactionId] = useState("");
+    const [checkoutUrl, setCheckoutUrl] = useState("");
+    const [paymentStatus, setPaymentStatus] = useState<"pending" | "completed" | "failed">("pending");
 
     // Card State
     const [email, setEmail] = useState("");
@@ -94,6 +99,43 @@ const DonatePay = () => {
         }
     }, [provider]);
 
+    // Poll for payment completion when donation is initiated via mobile money
+    useEffect(() => {
+        if (!transactionId || paymentStatus !== "pending" || !isSuccess) return;
+
+        let attempts = 0;
+        const interval = setInterval(async () => {
+            attempts++;
+            if (attempts > 40) { // Stop polling after ~2 minutes
+                clearInterval(interval);
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_URL}/payment-status/${encodeURIComponent(transactionId)}`);
+                if (res.ok) {
+                    const json = await res.json();
+                    const status = json.status || json.data?.status;
+                    if (status === "completed" || status === "success") {
+                        setPaymentStatus("completed");
+                        toast({
+                            title: "Donation Confirmed!",
+                            description: "Your Mobile Money payment was received. Thank you for your generosity!",
+                        });
+                        clearInterval(interval);
+                    } else if (status === "failed") {
+                        setPaymentStatus("failed");
+                        clearInterval(interval);
+                    }
+                }
+            } catch (e) {
+                // Ignore network hiccups while polling
+            }
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [transactionId, paymentStatus, isSuccess, toast]);
+
     const totalDue = amount ? parseFloat(amount) : 0;
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -108,10 +150,28 @@ const DonatePay = () => {
             return;
         }
 
+        if (provider !== "card" && parseFloat(amount) < 1000) {
+            toast({
+                title: "Minimum Amount",
+                description: "Minimum mobile money donation is UGX 1,000.",
+                variant: "destructive",
+            });
+            return;
+        }
+
         if (!provider) {
             toast({
                 title: "Payment Method Required",
                 description: "Please select a payment method to continue.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        if ((provider === "mtn" || provider === "airtel") && (!phone || phone.replace(/\s+/g, "").length < 9)) {
+            toast({
+                title: "Invalid Phone Number",
+                description: "Please enter a valid MTN or Airtel Mobile Money phone number.",
                 variant: "destructive",
             });
             return;
@@ -138,29 +198,26 @@ const DonatePay = () => {
                 }),
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                let errorMsg = "Payment processing failed";
-                try {
-                    const errorData = await response.json();
-                    errorMsg = errorData.error || errorData.message || errorMsg;
-                } catch (e) {
-                    // If not JSON, try text
-                    const errorText = await response.text();
-                    if (errorText) errorMsg = errorText;
-                }
-                throw new Error(errorMsg);
+                throw new Error(data.error || data.message || "Payment processing failed");
             }
 
+            setTransactionId(data.transactionId || "");
+            setCheckoutUrl(data.checkoutUrl || "");
+            setPaymentStatus("pending");
             setIsSuccess(true);
+
             toast({
-                title: provider === "card" ? "Donation Successful!" : "Donation Initiated!",
+                title: provider === "card" ? "Donation Successful!" : "Payment Prompt Sent!",
                 description: provider === "card"
                     ? "Thank you for your generous contribution."
-                    : "Please check your phone for the PIN prompt to complete your donation.",
+                    : `Please check ${phone} for the Mobile Money PIN prompt to complete your donation of UGX ${parseFloat(amount).toLocaleString()}.`,
             });
         } catch (err: any) {
             toast({
-                title: "Error",
+                title: "Payment Failed",
                 description: err.message || "An error occurred. Please try again.",
                 variant: "destructive",
             });
@@ -172,34 +229,98 @@ const DonatePay = () => {
     if (isSuccess) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-                <div className="max-w-md w-full bg-white rounded-[2.5rem] shadow-xl p-10 text-center animate-in fade-in zoom-in duration-500">
-                    <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle2 className="w-14 h-14 text-green-600" />
+                <div className="max-w-md w-full bg-white rounded-[2.5rem] shadow-xl p-8 sm:p-10 text-center animate-in fade-in zoom-in duration-500 space-y-6">
+                    <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto transition-colors ${
+                        paymentStatus === "completed"
+                            ? "bg-emerald-100 text-emerald-600"
+                            : paymentStatus === "failed"
+                            ? "bg-rose-100 text-rose-600"
+                            : "bg-primary/10 text-primary"
+                    }`}>
+                        {paymentStatus === "completed" ? (
+                            <CheckCircle2 className="w-14 h-14 text-emerald-600 animate-bounce" />
+                        ) : paymentStatus === "failed" ? (
+                            <AlertCircle className="w-14 h-14 text-rose-600" />
+                        ) : (
+                            <Smartphone className="w-12 h-12 text-primary animate-pulse" />
+                        )}
                     </div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank You!</h2>
-                    <p className="text-gray-600 mb-8">
-                        Your donation of <span className="font-bold text-primary">UGX {parseFloat(amount).toLocaleString()}</span> helps empower vulnerable youth.
-                        A confirmation email will be sent shortly.
-                    </p>
-                    <Button
-                        onClick={() => {
-                            setIsSuccess(false);
-                            setAmount("");
-                            setSelectedPreset(null);
-                            setPhone("");
-                            // Reset card fields too just in case
-                            setEmail("");
-                            setFirstName("");
-                            setLastName("");
-                            setCardNumber("");
-                            setExpiry("");
-                            setCvv("");
-                            setNameOnCard("");
-                        }}
-                        className="w-full h-14 rounded-full text-lg font-bold"
-                    >
-                        Make another donation
-                    </Button>
+
+                    <div className="space-y-2">
+                        {transactionId && (
+                            <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
+                                Ref: #{transactionId}
+                            </span>
+                        )}
+
+                        {paymentStatus === "completed" ? (
+                            <>
+                                <h2 className="text-3xl font-extrabold text-emerald-600">Donation Confirmed!</h2>
+                                <p className="text-gray-600">
+                                    Your donation of <span className="font-bold text-gray-900">UGX {parseFloat(amount).toLocaleString()}</span> has been received! Thank you for empowering vulnerable communities with SSENA HEALING AFRICA.
+                                </p>
+                            </>
+                        ) : paymentStatus === "failed" ? (
+                            <>
+                                <h2 className="text-3xl font-extrabold text-rose-600">Donation Not Completed</h2>
+                                <p className="text-gray-600">
+                                    The mobile money prompt timed out or was cancelled. Please try again or complete online below.
+                                </p>
+                            </>
+                        ) : (
+                            <>
+                                <h2 className="text-3xl font-bold text-gray-900">Check Your Phone!</h2>
+                                <p className="text-gray-600 text-sm sm:text-base">
+                                    A Mobile Money push prompt was sent to <strong className="text-gray-900">{phone}</strong>. Please enter your PIN to approve your donation of{" "}
+                                    <span className="font-bold text-primary">UGX {parseFloat(amount).toLocaleString()}</span>.
+                                </p>
+                                <div className="flex items-center justify-center gap-2 text-xs font-semibold text-primary pt-1">
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    <span>Waiting for your PIN confirmation...</span>
+                                </div>
+                            </>
+                        )}
+                    </div>
+
+                    {checkoutUrl && paymentStatus !== "completed" && (
+                        <div className="pt-2">
+                            <a
+                                href={checkoutUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 text-xs font-bold text-primary hover:underline"
+                            >
+                                <span>Didn't get the prompt? Complete via Web Checkout</span>
+                                <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                        </div>
+                    )}
+
+                    <div className="pt-2 space-y-3">
+                        <Button
+                            onClick={() => {
+                                setIsSuccess(false);
+                                setPaymentStatus("pending");
+                                setTransactionId("");
+                                setAmount("");
+                                setSelectedPreset(null);
+                                setPhone("");
+                                setEmail("");
+                                setFirstName("");
+                                setLastName("");
+                            }}
+                            className="w-full h-13 rounded-full text-base font-bold"
+                        >
+                            Make Another Donation
+                        </Button>
+                        <Button
+                            variant="outline"
+                            onClick={() => navigate("/")}
+                            className="w-full h-12 rounded-full text-sm font-semibold"
+                        >
+                            Return to Home
+                        </Button>
+                    </div>
                 </div>
             </div>
         );
