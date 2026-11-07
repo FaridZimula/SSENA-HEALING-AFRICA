@@ -15,6 +15,7 @@ import {
   Smartphone,
   Plus,
   Minus,
+  Check,
   CheckCircle2,
   Lock,
   ArrowRight,
@@ -218,18 +219,18 @@ export const QuickBuyBookModal: React.FC<QuickBuyBookModalProps> = ({
             /* Prompt Sent / Status View */
             <div className="text-center space-y-5 py-2">
               <div
-                className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-colors ${
+                className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto transition-all duration-300 ${
                   paymentStatus === "completed"
-                    ? "bg-emerald-500/10 text-emerald-600"
+                    ? "bg-primary text-white shadow-xl shadow-primary/30 ring-4 ring-primary/15"
                     : paymentStatus === "failed"
                     ? "bg-rose-500/10 text-rose-600"
                     : "bg-primary/10 text-primary"
                 }`}
               >
                 {paymentStatus === "completed" ? (
-                  <CheckCircle2 className="w-10 h-10 text-emerald-600 animate-bounce" />
+                  <Check className="w-9 h-9 text-white stroke-[3.5] animate-in zoom-in-75 duration-300" />
                 ) : paymentStatus === "failed" ? (
-                  <AlertCircle className="w-10 h-10 text-rose-600" />
+                  <AlertCircle className="w-8 h-8 text-rose-600" />
                 ) : (
                   <Smartphone className="w-8 h-8 text-primary animate-pulse" />
                 )}

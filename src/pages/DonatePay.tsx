@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import {
     Heart,
     Smartphone,
+    Check,
     CheckCircle2,
     ArrowRight,
     Loader2,
@@ -230,15 +231,15 @@ const DonatePay = () => {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
                 <div className="max-w-md w-full bg-white rounded-[2.5rem] shadow-xl p-8 sm:p-10 text-center animate-in fade-in zoom-in duration-500 space-y-6">
-                    <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto transition-colors ${
+                    <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto transition-all duration-300 ${
                         paymentStatus === "completed"
-                            ? "bg-emerald-100 text-emerald-600"
+                            ? "bg-primary text-white shadow-xl shadow-primary/30 ring-8 ring-primary/15"
                             : paymentStatus === "failed"
                             ? "bg-rose-100 text-rose-600"
                             : "bg-primary/10 text-primary"
                     }`}>
                         {paymentStatus === "completed" ? (
-                            <CheckCircle2 className="w-14 h-14 text-emerald-600 animate-bounce" />
+                            <Check className="w-13 h-13 text-white stroke-[3.5] animate-in zoom-in-75 duration-300" />
                         ) : paymentStatus === "failed" ? (
                             <AlertCircle className="w-14 h-14 text-rose-600" />
                         ) : (
@@ -247,15 +248,9 @@ const DonatePay = () => {
                     </div>
 
                     <div className="space-y-2">
-                        {transactionId && (
-                            <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
-                                Ref: #{transactionId}
-                            </span>
-                        )}
-
                         {paymentStatus === "completed" ? (
                             <>
-                                <h2 className="text-3xl font-extrabold text-emerald-600">Donation Confirmed!</h2>
+                                <h2 className="text-3xl font-extrabold text-foreground">Donation Confirmed!</h2>
                                 <p className="text-gray-600">
                                     Your donation of <span className="font-bold text-gray-900">UGX {parseFloat(amount).toLocaleString()}</span> has been received! Thank you for empowering vulnerable communities with SSENA HEALING AFRICA.
                                 </p>

@@ -13,6 +13,7 @@ import {
   Plus,
   Minus,
   Smartphone,
+  Check,
   CheckCircle2,
   ArrowRight,
   ChevronLeft,
@@ -241,17 +242,17 @@ const BuyBook = () => {
           {isSuccess ? (
             /* Success / Pending Prompt State */
             <div className="max-w-2xl mx-auto bg-card border border-border rounded-3xl p-8 md:p-12 shadow-2xl text-center space-y-6 animate-scale-in">
-              <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-colors ${
+              <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-all duration-300 ${
                 paymentStatus === "completed"
-                  ? "bg-emerald-500/10 text-emerald-600"
+                  ? "bg-primary text-white shadow-xl shadow-primary/30 ring-8 ring-primary/15"
                   : paymentStatus === "failed"
                   ? "bg-rose-500/10 text-rose-600"
                   : "bg-primary/10 text-primary"
               }`}>
                 {paymentStatus === "completed" ? (
-                  <CheckCircle2 className="w-12 h-12 text-emerald-600 animate-bounce" />
+                  <Check className="w-11 h-11 text-white stroke-[3.5] animate-in zoom-in-75 duration-300" />
                 ) : paymentStatus === "failed" ? (
-                  <AlertCircle className="w-12 h-12 text-rose-600" />
+                  <AlertCircle className="w-11 h-11 text-rose-600" />
                 ) : (
                   <Smartphone className="w-10 h-10 animate-pulse text-primary" />
                 )}
