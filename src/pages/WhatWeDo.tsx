@@ -136,7 +136,9 @@ const WhatWeDo = () => {
     <Layout>
       <SEO
         title="What We Do | SSENA HEALING AFRICA"
-        description="Explore our mental health, counseling, and therapy services including trauma healing, substance abuse counseling, and family therapy in Uganda."
+        description="Explore our mental health, counseling, and therapy services including trauma healing, child protection, vocational life skilling, and youth empowerment in Uganda."
+        url="https://ssenahealingafrica.org/what-we-do"
+        keywords="Mental Health Services Uganda, Trauma Recovery, Counseling Uganda, Child Protection, Vocational Skilling, SSENA Healing Africa"
       />
 
       {/* Hero Section */}

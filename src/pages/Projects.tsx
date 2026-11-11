@@ -43,8 +43,10 @@ const Projects = () => {
   return (
     <Layout>
       <SEO
-        title="Our Projects | SSENA HEALING AFRICA"
-        description="Explore SSENA HEALING AFRICA's ongoing projects in community wellness, mental health support, and therapy across Uganda."
+        title="Our Projects & Community Outreaches | SSENA HEALING AFRICA"
+        description="Explore SSENA HEALING AFRICA's active projects in youth mentorship, hospital outreaches, career guidance, market cleanups, and vocational skills training across Uganda."
+        url="https://ssenahealingafrica.org/projects"
+        keywords="Community Projects Uganda, Youth Mentorship Uganda, Ishaka Hospital Outreach, Career Guidance, NGO Outreaches Uganda"
       />
       {/* Hero Section */}
       <section className="bg-zinc-900 section-padding relative overflow-hidden">

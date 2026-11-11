@@ -1,45 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
   <url>
-    <loc>https://suyel.org/</loc>
-    <lastmod>2025-03-06</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://ssenahealingafrica.org/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- What We Do -->
   <url>
-    <loc>https://suyel.org/profile</loc>
-    <lastmod>2025-03-06</lastmod>
+    <loc>https://ssenahealingafrica.org/what-we-do</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+
+  <!-- Community Projects -->
   <url>
-    <loc>https://suyel.org/leadership</loc>
-    <lastmod>2025-03-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://suyel.org/projects</loc>
-    <lastmod>2025-03-06</lastmod>
+    <loc>https://ssenahealingafrica.org/projects</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Buy Publications & Books -->
   <url>
-    <loc>https://suyel.org/donate</loc>
-    <lastmod>2025-03-06</lastmod>
+    <loc>https://ssenahealingafrica.org/buy-book</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Donate Page -->
+  <url>
+    <loc>https://ssenahealingafrica.org/donate</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Donate Checkout -->
+  <url>
+    <loc>https://ssenahealingafrica.org/donate/pay</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- About / Profile -->
   <url>
-    <loc>https://suyel.org/register</loc>
-    <lastmod>2025-03-06</lastmod>
+    <loc>https://ssenahealingafrica.org/profile</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Membership Registration -->
   <url>
-    <loc>https://suyel.org/contact</loc>
-    <lastmod>2025-03-06</lastmod>
+    <loc>https://ssenahealingafrica.org/register</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Us -->
+  <url>
+    <loc>https://ssenahealingafrica.org/contact</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -34,7 +34,9 @@ const Donate = () => {
         <Layout>
             <SEO
                 title="Support Our Mission | Donate to SSENA HEALING AFRICA"
-                description="Your contribution helps us provide professional counseling, trauma healing workshops, and mental health support. Support our mission today."
+                description="Your contribution helps us provide professional counseling, trauma healing workshops, sanitary packs, and mental health support across Uganda. Donate via Mobile Money or Card."
+                url="https://ssenahealingafrica.org/donate"
+                keywords="Donate Uganda, Support Mental Health Uganda, SSENA Healing Africa Donation, Mobile Money Donation, NGO Uganda"
             />
             {/* Hero Section */}
             <section className="bg-zinc-900 section-padding relative overflow-hidden">

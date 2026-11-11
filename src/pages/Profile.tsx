@@ -40,7 +40,9 @@ const Profile = () => {
     <Layout>
       <SEO
         title="Our Profile | Vision, Mission & Values of SSENA HEALING AFRICA"
-        description="Learn about SSENA HEALING AFRICA's history, mission to foster mental wellness, and our core values of integrity and inclusion."
+        description="Learn about SSENA HEALING AFRICA's history, mission to foster mental wellness, trauma recovery, and our core values of integrity and inclusion across Uganda."
+        url="https://ssenahealingafrica.org/profile"
+        keywords="About SSENA Healing Africa, NGO Uganda, Mental Health NGO, Farid Zimula, Vision Mission Uganda"
       />
       {/* Hero Section */}
       <section className="bg-zinc-900 section-padding relative overflow-hidden">

@@ -204,6 +204,26 @@ const BuyBook = () => {
       <SEO
         title={`Order "${selectedBook.title}" | SSENA HEALING AFRICA`}
         description={`Purchase "${selectedBook.title}" by SSENA HEALING AFRICA for UGX 30,000. Pay securely via MTN Mobile Money or Airtel Money.`}
+        url={`https://ssenahealingafrica.org/buy-book?book=${selectedBook.id}`}
+        ogImage={`https://ssenahealingafrica.org${selectedBook.cover}`}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Book",
+          "name": selectedBook.title,
+          "author": {
+            "@type": "Organization",
+            "name": "Ssena Healing Africa"
+          },
+          "image": `https://ssenahealingafrica.org${selectedBook.cover}`,
+          "description": selectedBook.description,
+          "offers": {
+            "@type": "Offer",
+            "price": "30000",
+            "priceCurrency": "UGX",
+            "availability": "https://schema.org/InStock",
+            "url": `https://ssenahealingafrica.org/buy-book?book=${selectedBook.id}`
+          }
+        }}
       />
 
       <div className="bg-background min-h-screen py-8 md:py-12">

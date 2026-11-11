@@ -8,7 +8,7 @@ const navLinks = [
   { name: "Our Profile", path: "/profile" },
   { name: "What We Do", path: "/what-we-do" },
   { name: "Projects", path: "/projects" },
-  { name: "Donate", path: "/donate" },
+  { name: "Books", path: "/buy-book" },
   { name: "Contact Us", path: "/contact" },
 ];
 
@@ -45,52 +45,53 @@ const Navbar = () => {
               />
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden xl:flex items-center gap-1 mx-auto">
+            {/* Desktop Navigation Links - Displayed cleanly along the navbar */}
+            <div className="hidden lg:flex items-center gap-1 xl:gap-2 mx-auto">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${location.pathname === link.path
-                    ? "bg-black text-white shadow-md"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                    }`}
+                  className={`px-3 py-2 rounded-xl text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
+                    location.pathname === link.path
+                      ? "bg-primary text-white shadow-sm font-bold"
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  }`}
                 >
                   {link.name}
                 </Link>
               ))}
             </div>
 
-            {/* Right Container: Action Buttons + Prominent Green Hamburger Menu */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
+            {/* Right Container: Action Buttons + Mobile Hamburger Menu */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto lg:ml-0">
               <div className="hidden sm:flex items-center gap-2 shrink-0">
-                <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-white">
+                <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-white font-bold rounded-xl h-10 px-4">
                   <Link to="/donate">Donate</Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="font-bold rounded-xl h-10 px-4 shadow-md shadow-primary/20">
                   <Link to="/register">Register</Link>
                 </Button>
               </div>
 
-              {/* Prominent Green Menu Button - PINNED TO TOP RIGHT ALWAYS */}
+              {/* Green Hamburger Menu Button - ONLY VISIBLE ON MOBILE / TABLET (lg:hidden) */}
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2.5 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center shadow-lg transition-all active:scale-95 z-50 shrink-0 cursor-pointer border border-white/20"
+                className="lg:hidden p-2 sm:p-2.5 rounded-xl bg-primary text-white hover:bg-primary/90 flex items-center justify-center shadow-md transition-all active:scale-95 shrink-0 cursor-pointer border border-white/20"
                 aria-label="Toggle Navigation Menu"
               >
                 {isOpen ? (
-                  <X className="w-6 h-6 stroke-[3]" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3]" />
                 ) : (
-                  <Menu className="w-6 h-6 stroke-[3]" />
+                  <Menu className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3]" />
                 )}
               </button>
             </div>
           </div>
 
-          {/* Navigation Dropdown Menu - Opens cleanly on all screens */}
+          {/* Mobile Navigation Dropdown Menu - ONLY ON MOBILE (lg:hidden) */}
           {isOpen && (
-            <div className="py-4 border-t border-border animate-fade-in bg-background shadow-2xl rounded-b-2xl w-full">
+            <div className="lg:hidden py-4 border-t border-border animate-fade-in bg-background shadow-2xl rounded-b-2xl w-full">
               <div className="flex flex-col gap-1.5">
                 {navLinks.map((link) => (
                   <Link

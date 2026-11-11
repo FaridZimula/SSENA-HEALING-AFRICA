@@ -148,6 +148,13 @@ const Index = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Ssena Healing Africa | Mental Health, Youth Empowerment & Community Outreach Uganda"
+        description="Ssena Healing Africa is a registered Ugandan non-governmental organization dedicated to community mental health, trauma recovery, child sexual violence awareness, vocational skilling, and youth empowerment."
+        keywords="Ssena Healing Africa, Mental Health Uganda, Youth Empowerment Uganda, Child Protection Uganda, Breaking The Circle, Echoes of a Stolen Childhood, Community Outreach Uganda, Non-Profit Uganda, Donate Uganda, Farid Zimula"
+        url="https://ssenahealingafrica.org"
+      />
+
       {/* Hero Section */}
       {/* Hero Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-6 bg-background">

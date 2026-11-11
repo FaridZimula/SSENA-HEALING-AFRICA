@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 import { API_URL } from "@/config";
+import SEO from "@/components/SEO";
 
 const DonatePay = () => {
     const navigate = useNavigate();
@@ -323,6 +324,11 @@ const DonatePay = () => {
 
     return (
         <div className="min-h-screen bg-white">
+            <SEO
+                title="Secure Donation Checkout | SSENA HEALING AFRICA"
+                description="Complete your donation to SSENA HEALING AFRICA via MTN Mobile Money, Airtel Money, or Card to support mental health, trauma recovery, and youth empowerment."
+                url="https://ssenahealingafrica.org/donate/pay"
+            />
             {/* Simple Header */}
             <header className="border-b border-gray-100 py-4 px-6 sticky top-0 bg-white z-10">
                 <div className="max-w-5xl mx-auto flex items-center justify-between">

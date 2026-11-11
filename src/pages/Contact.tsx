@@ -68,7 +68,9 @@ const Contact = () => {
     <Layout>
       <SEO
         title="Contact Us | SSENA HEALING AFRICA"
-        description="Have questions or want to partner with us? Reach out to SSENA HEALING AFRICA via our contact form, email, or visit our office."
+        description="Connect with SSENA HEALING AFRICA for partnerships, school mental health workshops, counseling inquiries, or volunteering opportunities in Uganda."
+        url="https://ssenahealingafrica.org/contact"
+        keywords="Contact SSENA Healing Africa, NGO Office Kampala, Volunteer Uganda, Mental Health Partnerships"
       />
       {/* Hero Section */}
       <section className="bg-zinc-900 section-padding relative overflow-hidden">

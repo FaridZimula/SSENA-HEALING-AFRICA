@@ -148,6 +148,12 @@ const Register = () => {
 
     return (
         <Layout>
+            <SEO
+                title="Register for Membership | SSENA HEALING AFRICA"
+                description="Become a registered member of SSENA HEALING AFRICA to champion youth mental wellness, community outreaches, and skill development in Uganda."
+                url="https://ssenahealingafrica.org/register"
+                keywords="Register SSENA Healing Africa, NGO Membership Uganda, Youth Volunteering, Community Service Uganda"
+            />
             <section className="px-4 sm:px-6 lg:px-8 py-12 bg-background min-h-[80vh] flex items-center justify-center">
                 <div className="w-full max-w-2xl bg-card rounded-[2.5rem] shadow-xl p-8 sm:p-12 border border-border">
                     <div className="text-center mb-10">
