@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -330,22 +330,33 @@ const DonatePay = () => {
                 url="https://ssenahealingafrica.org/donate/pay"
             />
             {/* Simple Header */}
-            <header className="border-b border-gray-100 py-4 px-6 sticky top-0 bg-white z-10">
-                <div className="max-w-5xl mx-auto flex items-center justify-between">
-                    <div className="flex-1">
+            <header className="border-b border-border/60 py-3.5 px-4 sm:px-6 sticky top-0 bg-background/95 backdrop-blur-md z-20 shadow-xs">
+                <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
+                    <div className="flex-1 flex items-center justify-start">
                         <button
+                            type="button"
                             onClick={() => navigate(-1)}
-                            className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors font-medium"
+                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-border/80 bg-muted/40 hover:bg-primary/10 hover:border-primary/40 hover:text-primary text-foreground transition-all duration-200 text-sm font-semibold shadow-xs group"
+                            aria-label="Go back"
                         >
-                            <ChevronLeft className="w-5 h-5" />
-                            <span className="hidden sm:inline">Back</span>
+                            <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5 text-primary" />
+                            <span>Back</span>
                         </button>
                     </div>
-                    <img src="/Suyel%20Main%20Logo.png" alt="SSENA HEALING AFRICA Logo" className="h-14 w-auto" />
-                    <div className="flex-1 flex justify-end">
-                        <div className="hidden md:flex items-center gap-2 text-gray-400 text-sm font-medium">
-                            <Lock className="w-4 h-4" />
-                            Secure Checkout
+
+                    <Link to="/" className="flex items-center justify-center shrink-0 transition-transform hover:scale-105" title="Ssena Healing Africa Home">
+                        <img
+                            src="/SSENA LOGO.png"
+                            alt="SSENA HEALING AFRICA Logo"
+                            className="h-12 sm:h-14 w-auto object-contain"
+                        />
+                    </Link>
+
+                    <div className="flex-1 flex justify-end items-center">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-xs sm:text-sm font-semibold">
+                            <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                            <span className="hidden sm:inline">Secure Checkout</span>
+                            <span className="sm:hidden">Secure</span>
                         </div>
                     </div>
                 </div>

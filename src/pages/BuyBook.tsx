@@ -232,10 +232,10 @@ const BuyBook = () => {
           <div className="mb-6">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-border/80 bg-muted/40 hover:bg-primary/10 hover:border-primary/40 hover:text-primary text-foreground transition-all duration-200 text-sm font-semibold shadow-xs group"
             >
-              <ChevronLeft className="w-4 h-4" />
-              Back to Home
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5 text-primary" />
+              <span>Back to Home</span>
             </Link>
           </div>
 

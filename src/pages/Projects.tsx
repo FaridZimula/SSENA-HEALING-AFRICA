@@ -14,31 +14,7 @@ const Projects = () => {
   const { projects } = useData();
   const { isAuthenticated } = useAuth();
 
-  // Enforce the exact original order based on titles
-  const originalOrder = [
-    "Youth Leadership in Community Action",
-    "Outreach to Ishaka Adventist Hospital",
-    "Basoga Nssete Leadership Training",
-    "Mentorship and Career Guidance",
-    "Inter-University Mentorship Front",
-    "Community Outreach: Market Cleanup",
-    "Community Outreach: Elderly & Orphans",
-    "44th Tarehe Sita Anniversary Celebrations",
-    "State Dinner: 44th Tarehe Sita Anniversary",
-    "National University Leadership Training",
-    "Mentorship at Bassajabalaba Secondary School",
-    "Counseling and Guidance at Bassajabalaba Secondary School",
-    "Tech & Innovation: Mastering the New Economy"
-  ];
-
-  const filtered = projects.filter(p => originalOrder.includes(p.title));
-  
-  const sortedProjects = (filtered.length > 0 ? filtered : initialProjects)
-    .sort((a, b) => {
-      const indexA = originalOrder.indexOf(a.title);
-      const indexB = originalOrder.indexOf(b.title);
-      return indexA - indexB;
-    });
+  const sortedProjects = projects && projects.length > 0 ? projects : initialProjects;
 
   return (
     <Layout>

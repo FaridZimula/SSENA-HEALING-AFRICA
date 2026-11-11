@@ -5,6 +5,23 @@ export const projects = [
     // The very first project added (Positive Parenting) remains at the BOTTOM.
     // ----------------------------------------------------------------------
     {
+        title: "Tubeyi Primary School Mental Health Awareness Outreach, Mbale",
+        category: "Mental Health & Emotional Well-being",
+        description: "While in Mbale, SSENA HEALING AFRICA conducted an impactful mental health awareness and psycho-social support session with pupils of Tubeyi Primary School. The session empowered young learners with essential emotional regulation tools, guiding them on how to identify, understand, and constructively navigate their feelings whenever faced with mental health imbalances or life distress.",
+        shortDescription: "Conducting an empowering mental health awareness session with pupils of Tubeyi Primary School in Mbale, teaching emotional regulation and coping skills.",
+        impact: "Emotional Resilience",
+        images: [
+            "/TUMBEYI (1).webp",
+            "/TUMBEYI (2).webp",
+            "/TUMBEYI (3).webp",
+            "/TUMBEYI (4).webp",
+            "/TUMBEYI (5).webp",
+            "/TUMBEYI (6).webp",
+            "/TUMBEYI (7).webp"
+        ],
+        icon: "Heart",
+    },
+    {
         title: "Lwadda COU SS Career Guidance & Mental Health Workshop",
         category: "Career Guidance & Mental Health Resilience",
         description: "Partnering with Rotary Kampala Kibuli and Mulassa Foundation for an impactful outreach at Lwadda COU SS Matugga, delivering career guidance and practical mental health coping mechanisms to empower students in challenging environments.",
