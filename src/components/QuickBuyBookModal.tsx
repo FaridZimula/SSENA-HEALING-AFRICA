@@ -353,57 +353,94 @@ export const QuickBuyBookModal: React.FC<QuickBuyBookModalProps> = ({
                 </div>
               </div>
 
-              {/* Payment Provider Selection */}
-              <div className="space-y-1.5">
+              {/* Payment Method Selection */}
+              <div className="space-y-2">
                 <Label className="text-xs font-bold text-foreground">
-                  Mobile Money Provider
+                  Payment Method
                 </Label>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setProvider("mtn")}
-                    className={`py-2.5 px-3 rounded-xl border-2 text-center transition-all flex items-center justify-center gap-2 ${
+                    className={`relative flex flex-col items-center justify-center p-4 rounded-2xl border-2 transition-all group ${
                       provider === "mtn"
-                        ? "border-amber-500 bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold shadow-sm"
-                        : "border-border text-muted-foreground hover:border-amber-500/40"
+                        ? "border-yellow-400 bg-yellow-400/5 ring-4 ring-yellow-400/10"
+                        : "border-border hover:border-yellow-200 bg-card"
                     }`}
                   >
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                    <span className="text-xs sm:text-sm">MTN MoMo</span>
+                    <img
+                      src="/MTN mobile money.png"
+                      alt="MTN MoMo"
+                      className="h-10 w-auto object-contain mb-2"
+                    />
+                    <span
+                      className={`font-bold text-xs sm:text-sm ${
+                        provider === "mtn"
+                          ? "text-yellow-600 dark:text-yellow-400"
+                          : "text-muted-foreground group-hover:text-yellow-600 dark:group-hover:text-yellow-400"
+                      }`}
+                    >
+                      MTN MoMo
+                    </span>
+                    {provider === "mtn" && (
+                      <div className="absolute top-2.5 right-2.5 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center text-black ring-2 ring-background">
+                        <CheckCircle2 className="w-4 h-4" />
+                      </div>
+                    )}
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setProvider("airtel")}
-                    className={`py-2.5 px-3 rounded-xl border-2 text-center transition-all flex items-center justify-center gap-2 ${
+                    className={`relative flex flex-col items-center justify-center p-4 rounded-2xl border-2 transition-all group ${
                       provider === "airtel"
-                        ? "border-red-500 bg-red-500/10 text-red-600 dark:text-red-400 font-bold shadow-sm"
-                        : "border-border text-muted-foreground hover:border-red-500/40"
+                        ? "border-red-600 bg-red-600/5 ring-4 ring-red-600/10"
+                        : "border-border hover:border-red-200 bg-card"
                     }`}
                   >
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                    <span className="text-xs sm:text-sm">Airtel Money</span>
+                    <img
+                      src="/Airtel mobile money.jpg"
+                      alt="Airtel Money"
+                      className="h-10 w-auto object-contain mb-2"
+                    />
+                    <span
+                      className={`font-bold text-xs sm:text-sm ${
+                        provider === "airtel"
+                          ? "text-red-600 dark:text-red-400"
+                          : "text-muted-foreground group-hover:text-red-600 dark:group-hover:text-red-400"
+                      }`}
+                    >
+                      Airtel Money
+                    </span>
+                    {provider === "airtel" && (
+                      <div className="absolute top-2.5 right-2.5 w-5 h-5 bg-red-600 rounded-full flex items-center justify-center text-white ring-2 ring-background">
+                        <CheckCircle2 className="w-4 h-4" />
+                      </div>
+                    )}
                   </button>
                 </div>
               </div>
 
-              {/* Phone Number */}
-              <div className="space-y-1.5">
-                <Label htmlFor="momo-phone" className="text-xs font-bold text-foreground">
-                  Mobile Money Phone Number *
+              {/* Phone Number Input Styled like Donate */}
+              <div className="p-4 rounded-2xl bg-card border border-border space-y-2">
+                <Label htmlFor="momo-phone" className="text-xs font-bold text-foreground block text-center">
+                  Mobile Money Number *
                 </Label>
-                <div className="relative">
-                  <Smartphone className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <div className="relative w-full max-w-xs mx-auto">
+                  <Smartphone className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
                   <Input
                     id="momo-phone"
                     type="tel"
                     required
-                    placeholder="e.g. 0770000000 or 0750000000"
+                    placeholder="07XX XXX XXX"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="pl-10 h-11 rounded-xl text-sm font-mono"
+                    className="h-11 pl-10 text-center font-mono text-sm rounded-xl border-border bg-background"
                   />
                 </div>
+                <p className="text-[11px] text-muted-foreground italic text-center">
+                  You'll receive a secure PIN prompt on your phone.
+                </p>
               </div>
 
               {/* Full Name */}

@@ -521,89 +521,95 @@ const BuyBook = () => {
                     {/* Payment Method Selector */}
                     <div className="space-y-3">
                       <Label className="text-sm font-bold text-foreground">
-                        Select Payment Method *
+                        Payment method *
                       </Label>
                       <div className="grid grid-cols-2 gap-4">
                         {/* MTN Mobile Money */}
                         <button
                           type="button"
                           onClick={() => setPaymentMethod("mtn")}
-                          className={`p-4 rounded-2xl border-2 text-left transition-all duration-200 flex flex-col justify-between h-24 ${
+                          className={`relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all group ${
                             paymentMethod === "mtn"
-                              ? "border-amber-500 bg-amber-500/10 shadow-md"
-                              : "border-border bg-card hover:border-amber-500/50"
+                              ? "border-yellow-400 bg-yellow-400/5 ring-4 ring-yellow-400/10"
+                              : "border-border hover:border-yellow-200 bg-card"
                           }`}
                         >
-                          <div className="flex items-center justify-between w-full">
-                            <span className="font-extrabold text-amber-600 dark:text-amber-400 text-sm">
-                              MTN MoMo
-                            </span>
-                            <div
-                              className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                                paymentMethod === "mtn"
-                                  ? "border-amber-500 bg-amber-500 text-white"
-                                  : "border-muted-foreground/40"
-                              }`}
-                            >
-                              {paymentMethod === "mtn" && <div className="w-2 h-2 rounded-full bg-white" />}
-                            </div>
-                          </div>
-                          <span className="text-xs text-muted-foreground">
-                            MTN Mobile Money
+                          <img
+                            src="/MTN mobile money.png"
+                            alt="MTN MoMo"
+                            className="h-12 w-auto object-contain mb-3"
+                          />
+                          <span
+                            className={`font-bold text-sm ${
+                              paymentMethod === "mtn"
+                                ? "text-yellow-600 dark:text-yellow-400"
+                                : "text-muted-foreground group-hover:text-yellow-600 dark:group-hover:text-yellow-400"
+                            }`}
+                          >
+                            MTN MoMo
                           </span>
+                          {paymentMethod === "mtn" && (
+                            <div className="absolute top-3 right-3 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center text-black ring-2 ring-background">
+                              <CheckCircle2 className="w-4 h-4" />
+                            </div>
+                          )}
                         </button>
 
                         {/* Airtel Money */}
                         <button
                           type="button"
                           onClick={() => setPaymentMethod("airtel")}
-                          className={`p-4 rounded-2xl border-2 text-left transition-all duration-200 flex flex-col justify-between h-24 ${
+                          className={`relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all group ${
                             paymentMethod === "airtel"
-                              ? "border-red-500 bg-red-500/10 shadow-md"
-                              : "border-border bg-card hover:border-red-500/50"
+                              ? "border-red-600 bg-red-600/5 ring-4 ring-red-600/10"
+                              : "border-border hover:border-red-200 bg-card"
                           }`}
                         >
-                          <div className="flex items-center justify-between w-full">
-                            <span className="font-extrabold text-red-600 dark:text-red-400 text-sm">
-                              Airtel Money
-                            </span>
-                            <div
-                              className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                                paymentMethod === "airtel"
-                                  ? "border-red-500 bg-red-500 text-white"
-                                  : "border-muted-foreground/40"
-                              }`}
-                            >
-                              {paymentMethod === "airtel" && <div className="w-2 h-2 rounded-full bg-white" />}
-                            </div>
-                          </div>
-                          <span className="text-xs text-muted-foreground">
-                            Airtel Mobile Commerce
+                          <img
+                            src="/Airtel mobile money.jpg"
+                            alt="Airtel Money"
+                            className="h-12 w-auto object-contain mb-3"
+                          />
+                          <span
+                            className={`font-bold text-sm ${
+                              paymentMethod === "airtel"
+                                ? "text-red-600 dark:text-red-400"
+                                : "text-muted-foreground group-hover:text-red-600 dark:group-hover:text-red-400"
+                            }`}
+                          >
+                            Airtel Money
                           </span>
+                          {paymentMethod === "airtel" && (
+                            <div className="absolute top-3 right-3 w-5 h-5 bg-red-600 rounded-full flex items-center justify-center text-white ring-2 ring-background">
+                              <CheckCircle2 className="w-4 h-4" />
+                            </div>
+                          )}
                         </button>
                       </div>
                     </div>
 
                     {/* Phone Number Input */}
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-sm font-bold text-foreground">
-                        Mobile Money Phone Number *
-                      </Label>
-                      <div className="relative">
-                        <Smartphone className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                        <Input
-                          id="phone"
-                          type="tel"
-                          required
-                          placeholder="e.g. 0770000000 or 0750000000"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          className="pl-11 rounded-xl h-11 font-mono text-base"
-                        />
+                    <div className="p-6 rounded-2xl bg-card border border-border animate-in slide-in-from-top-2 duration-300">
+                      <div className="space-y-4 flex flex-col items-center">
+                        <Label htmlFor="phone" className="text-sm font-bold text-foreground text-center">
+                          Mobile Money Number *
+                        </Label>
+                        <div className="relative w-full max-w-xs">
+                          <Smartphone className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                          <Input
+                            id="phone"
+                            type="tel"
+                            placeholder="07XX XXX XXX"
+                            className="h-14 pl-12 text-center text-lg rounded-xl border-border bg-background"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <p className="text-xs text-muted-foreground italic text-center">
+                          You'll receive a secure PIN prompt on your phone.
+                        </p>
                       </div>
-                      <p className="text-xs text-muted-foreground">
-                        Enter the phone number registered with {paymentMethod === "airtel" ? "Airtel Money" : "MTN Mobile Money"} to receive the payment prompt.
-                      </p>
                     </div>
 
                     {/* Order Total & Submit Button */}
